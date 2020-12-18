@@ -1,4 +1,5 @@
 import canvasapi 
+import assignments
 
 token = '5593~yT5hxNeSPWoWVirrMP8DZBbSr10nkIXaUJJRVoybQfO7lvFlh4RlMVtGHutBdQr4'
 url_API = 'https://sacs.instructure.com'
@@ -6,12 +7,28 @@ url_API = 'https://sacs.instructure.com'
 #create a Canvas object for the given user; provides access to courses, assignments, users, etc...
 canvas = canvasapi.Canvas(url_API, token)
 
+print("Welcome to the SACS Canvas Interface.\nPlease enter the course number for the course you would like to work with today.\n")
+def set_course(canvas_object):
+    """Method to set the current course in use."""
+    course_number = int(input("Please enter the course number of the class.\n>>> ").strip())
+    course = canvas.get_course(course_number)
+    return course
+
+#create a course object for the specified course number
+current_course = set_course(canvas)
+all_users = current_course.get_users(enrollment_type=['student'])
+count = 0
+for user in all_users:
+    count += 1
+
+assignments.add_points(current_course, count)
+
 #creates a Paginated List of all courses
-courses = canvas.get_courses()
+#courses = canvas.get_courses()
 
 #create course objects for specific, singular courses
-acad_bio = canvas.get_course(35855)
-h_bio = canvas.get_course(36134)
+#acad_bio = canvas.get_course(35855)
+#h_bio = canvas.get_course(36134)
 '''Useful attributes for each course include the following. Use for loop to review all attributes.
     course.id
     course.name
@@ -34,7 +51,7 @@ for course in courses:
 '''
 
 #creates a paginated list of all assignments for a specific class 
-assignments = acad_bio.get_assignments()
+#assignments = acad_bio.get_assignments()
 '''Useful attributes for these objects include the following. Use the for loop to review all attributes.
     assignment.due_at
     assignment.unlock_at
@@ -63,7 +80,7 @@ for assignment in assignments:
 #what attributes they have, methods, etc...
 
 #creates a paginated list of all users for the given course. The example below will return only students.
-all_users = acad_bio.get_users(enrollment_type=['student'])
+#all_users = acad_bio.get_users(enrollment_type=['student'])
 '''Useful attributes for students include the following.
     student.id
     student.name
@@ -77,7 +94,7 @@ for item in user_vars.items():
 '''
 
 #get a single assignment and print the student's score or a message that they did not submit the assignment
-inv_species = acad_bio.get_assignment(541828)
+#inv_species = acad_bio.get_assignment(541828)
 
 '''
 ass_attributes = vars(inv_species)
@@ -85,6 +102,7 @@ for item in ass_attributes.items():
     print(item)
 '''
 
+'''
 submission = inv_species.get_submission(18313)
 for student in all_users:
     submission = inv_species.get_submission(student.id)
@@ -95,4 +113,4 @@ for student in all_users:
         print(student.name, "scored a zero out of {} on this assignment.".format(inv_species.points_possible))
     else:
         pass
-
+'''
