@@ -1,5 +1,5 @@
 import canvasapi 
-import assignments
+import assignment_methods, course_methods, module_methods
 
 token = '5593~yT5hxNeSPWoWVirrMP8DZBbSr10nkIXaUJJRVoybQfO7lvFlh4RlMVtGHutBdQr4'
 url_API = 'https://sacs.instructure.com'
@@ -7,21 +7,21 @@ url_API = 'https://sacs.instructure.com'
 #create a Canvas object for the given user; provides access to courses, assignments, users, etc...
 canvas = canvasapi.Canvas(url_API, token)
 
-print("Welcome to the SACS Canvas Interface.\nPlease enter the course number for the course you would like to work with today.\n")
-def set_course(canvas_object):
-    """Method to set the current course in use."""
-    course_number = int(input("Please enter the course number of the class.\n>>> ").strip())
-    course = canvas.get_course(course_number)
-    return course
+print("\nWelcome to the SACS Canvas Interface.\nPlease enter the course number for the course you would like to work with today.\n")
+course_methods.list_courses(canvas)
 
 #create a course object for the specified course number
-current_course = set_course(canvas)
-all_users = current_course.get_users(enrollment_type=['student'])
-count = 0
-for user in all_users:
-    count += 1
+current_course = course_methods.set_course(canvas)
 
-assignments.add_points(current_course, count)
+count, all_users = course_methods.current_users(current_course)
+
+course_methods.list_courses(canvas)
+#course_methods.update_course(current_course)
+#module_methods.display_modules(current_course)
+#module_methods.update_module(current_course)
+
+
+#assignment_methods.add_points(current_course, count)
 
 #creates a Paginated List of all courses
 #courses = canvas.get_courses()
