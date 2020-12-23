@@ -50,8 +50,8 @@ def update_course(current_course):
             print("Course name changed to", current_course.name)
         elif user_choice in ["2"]:
             print("Current course code:", current_course.course_code)
-            new_name = input("Provide the new course code: ").strip()
-            current_course.update(course={'course_code':new_name})
+            new_code= input("Provide the new course code: ").strip()
+            current_course.update(course={'course_code':new_code})
             print("Course code changed to", current_course.course_code)
         elif user_choice in ["3"]:
             print("Current start date:", current_course.start_at)

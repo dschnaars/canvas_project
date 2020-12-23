@@ -22,9 +22,10 @@ print(count)
 module_methods.display_modules(current_course)
 #module_methods.new_module(current_course)
 #module_methods.display_modules(current_course)
-#module_methods.update_module(current_course)
 current_module = module_methods.set_module(current_course)
 module_methods.display_module_items(current_module)
+module_methods.edit_module(current_module)
+
 
 #assignment_methods.add_points(current_course, count)
 
