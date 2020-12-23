@@ -3,6 +3,8 @@ import canvasapi, time
 def list_courses(canvas):
     """Method for listing all of a teacher's courses along with ID numbers
     and course codes. Can be used later to add to the shelf file."""
+    #TODO: create a shelf file that contains only the courses a teacher may be interested in this semester
+    #could leave in an option to list ALL courses if desired
     all_courses = canvas.get_courses()
     for course in all_courses:
         print("Course ID: " + str(course.id).ljust(10, '.') + course.name)

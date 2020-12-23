@@ -13,15 +13,18 @@ course_methods.list_courses(canvas)
 
 #create a course object for the specified course number
 current_course = course_methods.set_course(canvas)
-course_methods.update_course(current_course)
+#course_methods.update_course(current_course)
 
 count, all_students = course_methods.current_students(current_course)
 print(count)
 
 #course_methods.update_course(current_course)
+module_methods.display_modules(current_course)
+#module_methods.new_module(current_course)
 #module_methods.display_modules(current_course)
 #module_methods.update_module(current_course)
-
+current_module = module_methods.set_module(current_course)
+module_methods.display_module_items(current_module)
 
 #assignment_methods.add_points(current_course, count)
 
