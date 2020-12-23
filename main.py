@@ -1,4 +1,4 @@
-import canvasapi 
+import canvasapi, time 
 import assignment_methods, course_methods, module_methods
 
 token = '5593~yT5hxNeSPWoWVirrMP8DZBbSr10nkIXaUJJRVoybQfO7lvFlh4RlMVtGHutBdQr4'
@@ -8,6 +8,7 @@ url_API = 'https://sacs.instructure.com'
 canvas = canvasapi.Canvas(url_API, token)
 
 print("\nWelcome to the SACS Canvas Interface.\nPlease enter the course number for the course you would like to work with today.\n")
+time.sleep(2)
 course_methods.list_courses(canvas)
 
 #create a course object for the specified course number
