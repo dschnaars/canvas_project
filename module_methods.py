@@ -32,11 +32,11 @@ def new_module(current_course):
     module_name = input("Provide a name for the new module:\n>>>").strip()
     current_course.create_module(module={'name':module_name})
 
-def edit_module(current_module):
+def edit_module(current_course, current_module):
     """Method for updating module parameters."""
     done = False
     while not done:
-        user_choice = input("Choose module parameter to update:\n\n" +
+        user_choice = input("\nChoose module parameter to update:\n\n" +
         "1. Module Name\n" + 
         "2. Module Position\n" +
         "3. Published Status\n" +
@@ -46,11 +46,13 @@ def edit_module(current_module):
             print("Current module name:", current_module.name)
             new_name = input("Provide the new module name: ").strip()
             current_module.edit(module={'name':new_name})
+            current_module = current_course.get_module(current_module.id) #have to reload the module in order to confirm the change
             print("Module name changed to", current_module.name)
         elif user_choice in ["2"]:
             print("Current module position:", current_module.position)
-            new_position = input("Provide the new module position: ").strip()
+            new_position = int(input("Provide the new module position: ").strip())
             current_module.edit(module={'position':new_position})
+            current_module = current_course.get_module(current_module.id)
             print("Module position changed to", current_module.position)
         elif user_choice in ["3"]:
             print("Current publication status:", current_module.published)
@@ -58,10 +60,22 @@ def edit_module(current_module):
             if pub_status == 'Y':
                 current_module.edit(module={'published':True})
             elif pub_status == 'N':
-                current_module.edit(module={'published':True})
+                current_module.edit(module={'published':False})
             else:
                 print("Please enter only 'y' or 'n' for publishing the current module.")
+            current_module = current_course.get_module(current_module.id)
             print("New publication status:", current_module.published)
+        elif user_choice in ["4"]:
+            print("Sequential progress required:", current_module.require_sequential_progress)
+            req_seq_progress = input("Would you like to require sequential progress of module items? (Y/N):\n>>> ").strip().upper()
+            if req_seq_progress == 'Y':
+                current_module.edit(module={'require_sequential_progress':True})
+            elif req_seq_progress == 'N':
+                current_module.edit(module={'require_sequential_progress':False})
+            else:
+                print("Please enter only 'y' or 'n' for requiring sequential progress.")
+            current_module = current_course.get_module(current_module.id)
+            print("Sequential progress required:", current_module.require_sequential_progress)
             '''
             elif user_choice in ["4"]:
                 print("Current end date:", current_course.end_at)
@@ -75,3 +89,4 @@ def edit_module(current_module):
             break
         else:
             print("Not a valid parameter.")
+        
