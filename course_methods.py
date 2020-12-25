@@ -8,7 +8,7 @@ def list_courses(canvas):
     all_courses = canvas.get_courses()
     for course in all_courses:
         print("Course ID: " + str(course.id).ljust(10, '.') + course.name)
-        time.sleep(0.1)
+        time.sleep(0.05)
 
 def set_course(canvas_object):
     """Method to set the current course in use."""

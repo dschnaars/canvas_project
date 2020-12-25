@@ -1,4 +1,20 @@
+import canvasapi
 from progress.bar import ChargingBar
+
+def set_assignment(current_module):
+    """Method to set the current assignment in use."""
+
+    valid = True
+    while valid:
+        assignment_number = int(input("Please enter the assignment number of interest.\n>>> ").strip())
+        try:
+            assignment = current_module.get_module_item(assignment_number)
+            valid = False
+        except (canvasapi.exceptions.Unauthorized, canvasapi.exceptions.ResourceDoesNotExist):
+            print("Invalid Assignment Number")
+        except ValueError:
+            print("Invalid Assignment Number")
+    return assignment 
 
 def add_points(current_course, count):
     """Method to add points to all student scores, such as when curving a test."""
