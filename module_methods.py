@@ -90,3 +90,29 @@ def edit_module(current_course, current_module):
         else:
             print("Not a valid parameter.")
         
+def copy_module(current_course):
+    """Method for copying a module and modifying it. Junior's Method"""
+
+    #TODO: create a module object of the template module to be copied
+    display_modules(current_course)
+    template_module = set_module(current_course) #runs the set_module method from above allowing the user to set the module # to copy from
+
+    #TODO: create a new module and edit the attributes to match those of the template module
+    #new_module = current_course.create_module(module={'name':template_module.name + ' copy', 'unlock_at':template_module.unlock_at, 'position':template_module.position + 1, 'require_sequential_progress':template_module.require_sequential_progress, 'publish_final_grade':template_module.publish_final_grade, 'published':template_module.published})
+
+    #TODO: iterate through the module_items() from the template module and create a new assignment with the same attributes each time
+    old_items = template_module.get_module_items()
+
+    for item in old_items:
+        print(item.type, item.content_id, type(item.id), item.title)
+        old_assignment = current_course.get_assignment(item.content_id)
+        print(old_assignment.points_possible)
+        '''
+        if item.type == 'Assignment':
+            assignment = current_course.create_assignment(assignment={'name':item.title, 'published':item.published, })
+            new_module.create_module_item(module_item={'title':item.title, 'type':'Assignment', 'content_id':assignment.id, 'position':item.position})
+    
+    new_module.edit(module={'published':template_module.published})
+    '''
+
+    #That seems like it...?
