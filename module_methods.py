@@ -98,21 +98,45 @@ def copy_module(current_course):
     template_module = set_module(current_course) #runs the set_module method from above allowing the user to set the module # to copy from
 
     #TODO: create a new module and edit the attributes to match those of the template module
-    #new_module = current_course.create_module(module={'name':template_module.name + ' copy', 'unlock_at':template_module.unlock_at, 'position':template_module.position + 1, 'require_sequential_progress':template_module.require_sequential_progress, 'publish_final_grade':template_module.publish_final_grade, 'published':template_module.published})
+    new_module = current_course.create_module(module={'name':template_module.name + ' copy'}) 
 
     #TODO: iterate through the module_items() from the template module and create a new assignment with the same attributes each time
     old_items = template_module.get_module_items()
 
     for item in old_items:
-        print(item.type, item.content_id, type(item.id), item.title)
+        #print(item.type, item.content_id, type(item.id), item.title)
         old_assignment = current_course.get_assignment(item.content_id)
-        print(old_assignment.points_possible)
-        '''
+        #print(old_assignment.points_possible)
         if item.type == 'Assignment':
-            assignment = current_course.create_assignment(assignment={'name':item.title, 'published':item.published, })
-            new_module.create_module_item(module_item={'title':item.title, 'type':'Assignment', 'content_id':assignment.id, 'position':item.position})
+            assignment = current_course.create_assignment(
+                assignment={
+                    'name':old_assignment.name, 
+                    'position':old_assignment.position, 
+                    'points_possible':old_assignment.points_possible, 
+                    'grading_type':old_assignment.grading_type, 
+                    'due_at':old_assignment.due_at, 
+                    'lock_at':old_assignment.lock_at, 
+                    'unlock_at':old_assignment.unlock_at, 
+                    'assignment_group_id':old_assignment.assignment_group_id, 
+                    'published':old_assignment.published, 
+                    'omit_from_final_grade':old_assignment.omit_from_final_grade, 
+                    'allowed_attempts':old_assignment.allowed_attempts
+                    }) 
+            new_module.create_module_item(
+                module_item={
+                    'title':item.title, 
+                    'type':'Assignment', 
+                    'content_id':assignment.id, 
+                    'position':item.position, 
+                    'indent':item.indent, 
+                    #'new_tab':item.new_tab, 
+                    'completion_requirement':{
+                        'type':'must_mark_done'}, #item.completion_requirement.type}, 
+                    #'completion_requirement':{
+                        #'min_score':item.completion_requirement.min_score},
+                    'module_item':item.published,
+                    })
     
-    new_module.edit(module={'published':template_module.published})
-    '''
+    new_module.edit(module={'unlock_at':template_module.unlock_at, 'position':template_module.position + 1, 'require_sequential_progress':template_module.require_sequential_progress, 'publish_final_grade':template_module.publish_final_grade, 'published':template_module.published})
 
     #That seems like it...?

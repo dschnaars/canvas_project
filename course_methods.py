@@ -5,7 +5,7 @@ def list_courses(canvas):
     and course codes. Can be used later to add to the shelf file."""
     #TODO: create a shelf file that contains only the courses a teacher may be interested in this semester
     #could leave in an option to list ALL courses if desired
-    all_courses = canvas.get_courses()
+    all_courses = canvas.get_courses(enrollment_type='teacher')
     for course in all_courses:
         print("Course ID: " + str(course.id).ljust(10, '.') + course.name)
         time.sleep(0.05)
