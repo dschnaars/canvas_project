@@ -93,21 +93,16 @@ def edit_module(current_course, current_module):
 def copy_module(current_course):
     """Method for copying a module and modifying it. Junior's Method"""
 
-    #TODO: create a module object of the template module to be copied
     display_modules(current_course)
     template_module = set_module(current_course) #runs the set_module method from above allowing the user to set the module # to copy from
 
-    #TODO: create a new module and edit the attributes to match those of the template module
     new_module = current_course.create_module(module={'name':template_module.name + ' copy'}) 
 
-    #TODO: iterate through the module_items() from the template module and create a new assignment with the same attributes each time
     old_items = template_module.get_module_items()
 
     for item in old_items:
-        #print(item.type, item.content_id, type(item.id), item.title)
-        old_assignment = current_course.get_assignment(item.content_id)
-        #print(old_assignment.points_possible)
         if item.type == 'Assignment':
+            old_assignment = current_course.get_assignment(item.content_id)
             assignment = current_course.create_assignment(
                 assignment={
                     'name':old_assignment.name, 
@@ -122,6 +117,8 @@ def copy_module(current_course):
                     'omit_from_final_grade':old_assignment.omit_from_final_grade, 
                     'allowed_attempts':old_assignment.allowed_attempts
                     }) 
+            #TODO: would need to create a nested conditional to deal with external tools and loading items in a new tab
+            #new_tab attribute will not exist if submission_types does not include external_tool
             new_module.create_module_item(
                 module_item={
                     'title':item.title, 
@@ -129,14 +126,27 @@ def copy_module(current_course):
                     'content_id':assignment.id, 
                     'position':item.position, 
                     'indent':item.indent, 
-                    #'new_tab':item.new_tab, 
                     'completion_requirement':{
-                        'type':'must_mark_done'}, #item.completion_requirement.type}, 
-                    #'completion_requirement':{
-                        #'min_score':item.completion_requirement.min_score},
+                        'type':item.completion_requirement['type']}, 
                     'module_item':item.published,
                     })
+            #TODO: need to create a quick check for whether the completion type was set to min_score and then assign the same min_score
+            #if item.completion_requirement['type'] == 'min_score':
+                #'completion_requirement':{
+                    #'min_score':item.completion_requirement['min_score']},
+            print(item.title, item.completion_requirement['type'])
+        elif item.type == 'Quiz':
+            old_quiz = current_course.get_quiz(item.content_id)
+            print(old_quiz.title)
+        elif item.type == 'Page':
+            old_page = current_course.get_page(item.page_url)
+            print(old_page.html_url)
+        else:
+            print('Item type does not exist', item)
+        '''
+        item_vars = vars(item)
+        for i in item_vars.items():
+            print(i)
+        '''
     
     new_module.edit(module={'unlock_at':template_module.unlock_at, 'position':template_module.position + 1, 'require_sequential_progress':template_module.require_sequential_progress, 'publish_final_grade':template_module.publish_final_grade, 'published':template_module.published})
-
-    #That seems like it...?

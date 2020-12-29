@@ -122,3 +122,33 @@ for student in all_users:
     else:
         pass
 '''
+
+#testing page attributes
+'''
+python_course = canvas.get_course(37768)
+all_pages = python_course.get_pages()
+page_attributes = vars(all_pages[0])
+for item in page_attributes.items():
+    print(item)
+'''
+
+'''
+Page Attributes
+'_requester', <canvasapi.requester.Requester object at 0x000001B2DA7E5FA0>)
+'title'
+'created_at'
+'created_at_date'
+'url'
+'editing_roles'
+'page_id'
+'last_edited_by'
+'published'
+'hide_from_students'
+'front_page'
+'html_url'
+'todo_date'
+'updated_at'
+'updated_at_date'
+'locked_for_user'
+'course_id'
+'''
