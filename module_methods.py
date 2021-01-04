@@ -1,4 +1,5 @@
 import canvasapi
+import quiz_methods
 
 def display_modules(current_course):
     """Method for displaying all of the current modules for the selected course."""
@@ -103,7 +104,7 @@ def copy_module(current_course):
     for item in old_items:
         if item.type == 'Assignment':
             old_assignment = current_course.get_assignment(item.content_id)
-            assignment = current_course.create_assignment(
+            new_assignment = current_course.create_assignment(
                 assignment={
                     'name':old_assignment.name, 
                     'position':old_assignment.position, 
@@ -123,7 +124,7 @@ def copy_module(current_course):
                 module_item={
                     'title':item.title, 
                     'type':'Assignment', 
-                    'content_id':assignment.id, 
+                    'content_id':new_assignment.id, 
                     'position':item.position, 
                     'indent':item.indent, 
                     'completion_requirement':{
@@ -136,8 +137,7 @@ def copy_module(current_course):
                     #'min_score':item.completion_requirement['min_score']},
             print(item.title, item.completion_requirement['type'])
         elif item.type == 'Quiz':
-            old_quiz = current_course.get_quiz(item.content_id)
-            print(old_quiz.title)
+            quiz_methods.copy_quiz(current_course, new_module, item)
         elif item.type == 'Page':
             old_page = current_course.get_page(item.page_url)
             print(old_page.html_url)
