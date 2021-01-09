@@ -59,3 +59,7 @@ def copy_quiz(current_course, new_module, item):
                 'type':item.completion_requirement['type']}, 
             'module_item':item.published,
             })
+
+def set_extensions(current_course):
+    """Method for setting quiz extensions for specified students."""
+    pass
