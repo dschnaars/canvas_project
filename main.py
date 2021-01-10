@@ -16,23 +16,8 @@ current_course = course_methods.set_course(canvas)
 #course_methods.update_course(current_course)
 
 count, all_students = course_methods.current_students(current_course)
-print(count)
 
-#course_methods.update_course(current_course)
-#module_methods.display_modules(current_course)
-#module_methods.new_module(current_course)
-#module_methods.display_modules(current_course)
-#current_module = module_methods.set_module(current_course)
-#module_methods.display_module_items(current_module)
-#module_methods.edit_module(current_course, current_module)
-module_methods.copy_module(current_course)
-
-#current_assignment = assignment_methods.set_assignment(current_module)
-#print(current_assignment.title)
-#assignment_methods.add_points(current_course, count)
-
-#creates a Paginated List of all courses
-#courses = canvas.get_courses()
+course_methods.create_users_CSV(current_course)
 
 #create course objects for specific, singular courses
 #acad_bio = canvas.get_course(35855)

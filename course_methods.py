@@ -1,4 +1,4 @@
-import canvasapi, time
+import canvasapi, time, csv
 
 def list_courses(canvas):
     """Method for listing all of a teacher's courses along with ID numbers
@@ -32,6 +32,21 @@ def current_students(current_course):
     for user in all_students:
         count += 1
     return count, all_students
+
+#TODO: create a sub-method of sorts that can take the list of students and create a CSV file that I can add quiz extensions and parent emails to
+def create_users_CSV(current_course):
+    """Method for creating a CSV file that can be used for various other functions and contains
+    the usernames, id numbers, parent emails, quiz extensions, etc... for each student"""
+    count, all_students = current_students(current_course)
+    filename = input('Please provide a filename for the database you are creating.\n')
+    filename += '.csv'
+    students_file = open(filename, 'w', newline='')
+    outputwriter = csv.writer(students_file)
+    outputwriter.writerow(['Sortable Name', 'ID', 'email', 'Quiz Extensions', 'Parent Name 1', 'Parent Email 1', 'Parent Name 2', 'Parent Email 2'])
+
+    for student in all_students:
+        outputwriter.writerow([student.sortable_name, int(student.id), student.email, None, None, None, None, None])
+    students_file.close()
 
 def update_course(current_course):
     """Method for updating various course parameters, such as name, start/end date, etc..."""
