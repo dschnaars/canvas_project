@@ -48,14 +48,6 @@ def create_users_CSV(current_course):
         outputwriter.writerow([student.sortable_name, int(student.id), student.email, None, None, None, None, None])
     students_file.close()
 
-    students_file = open('bio_honors.csv', 'r')
-    csvreader = csv.reader(students_file)
-    next(csvreader)
-    for row in csvreader:
-        print(type(row[0]), type(row[1]), type(row[2]), type(row[3]))
-        print(row[0], int(row[1]), row[2], row[3])
-    students_file.close()
-
 def update_course(current_course):
     """Method for updating various course parameters, such as name, start/end date, etc..."""
     done = False
