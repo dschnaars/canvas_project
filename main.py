@@ -7,91 +7,46 @@ url_API = 'https://sacs.instructure.com'
 #create a Canvas object for the given user; provides access to courses, assignments, users, etc...
 canvas = canvasapi.Canvas(url_API, token)
 
-print("\nWelcome to the SACS Canvas Interface.\nPlease enter the course number for the course you would like to work with today.\n")
-#time.sleep(2)
-course_methods.list_courses(canvas)
-
 #create a course object for the specified course number
+print("\nWelcome to the SACS Canvas Interface.\nPlease enter the course number for the course you would like to work with today.\n")
+course_methods.list_courses(canvas)
 current_course = course_methods.set_course(canvas)
-#course_methods.update_course(current_course)
-
 count, all_students = course_methods.current_students(current_course)
 
-course_methods.create_users_CSV(current_course)
+user_choice = ''    #create an initial empty string for the user choice that will be 
+                    #modified to indicate what the user would like to do within the program today
 
-#create course objects for specific, singular courses
-#acad_bio = canvas.get_course(35855)
-#h_bio = canvas.get_course(36134)
-'''Useful attributes for each course include the following. Use for loop to review all attributes.
-    course.id
-    course.name
-    course.sis_course_id
+while user_choice not in ['q', 'Q', 'quit', 'Quit']:
+    print("\n\nPlease indicate what you would like to do today:" +
+        "\n\nCourse Methods" +
+        "\n\t1a. List Courses" +
+        "\n\t1b. Set Current Course" +
+        "\n\t1c. Create .csv for Current Course Student Users" +
+        "\n\t1d. Update Course"
+        "\n\nModule Methods" +
+        "\n\t2a. Display Modules in Current Course" +
+        "\n\t2b. Set Current Module" +
+        "\n\t2c. Display Module Items" +
+        "\n\t2d. Edit Module" +
+        "\n\t2e. Copy Module (Junior's Method)" +
+        "\n\t2f. Get Missing Assignments Report"
+        )
+    user_choice = input("\n>>> ").strip().lower()
 
+    if user_choice == '1a':
+        pass
+
+    elif user_choice == '2f':
+        """Generate a missing assignment report for the current module and have it emailed to the teacher."""
+        module_methods.display_modules(current_course)
+        current_module = module_methods.set_module(current_course)
+        module_methods.missing_assignment_report(current_course, all_students, current_module)
+        #pass
+
+'''
 courses = canvas.get_courses()
 course_attributes = vars(courses[0])
 for item in course_attributes.items():
-    print(item)
-'''
-
-#useful loop for listing all courses of a certain name along with ID numbers
-'''
-for course in courses:
-    if 'Schnaars' in course.name:
-        #print(type(course))
-        print(course.name)
-        print(course.course_code)
-        print(course.sis_course_id)
-'''
-
-#creates a paginated list of all assignments for a specific class 
-#assignments = acad_bio.get_assignments()
-'''Useful attributes for these objects include the following. Use the for loop to review all attributes.
-    assignment.due_at
-    assignment.unlock_at
-    assignment.lock_at
-    assignment.points_possible
-    assignment.assignment_group_id
-    assignment.course_id
-    assignment.name
-    assignment.muted
-    assignment.needs_grading_count
-
-attributes = vars(assignments[0])
-for item in attributes.items():
-    print(item)
-'''
-
-'''
-for assignment in assignments:
-    if assignment.id == 541828:
-        print(assignment.name)
-    if assignment.name == "Indiana's Least Wanted Poster":
-        print(assignment.id)
-'''
-
-#Need to learn information about users, getting list of all users for a course,
-#what attributes they have, methods, etc...
-
-#creates a paginated list of all users for the given course. The example below will return only students.
-#all_users = acad_bio.get_users(enrollment_type=['student'])
-'''Useful attributes for students include the following.
-    student.id
-    student.name
-    student.sortable_name
-    student.login_id
-    student.email
-
-user_vars = vars(all_users[0])
-for item in user_vars.items():
-    print(item)
-'''
-
-#get a single assignment and print the student's score or a message that they did not submit the assignment
-#inv_species = acad_bio.get_assignment(541828)
-
-'''
-ass_attributes = vars(inv_species)
-for item in ass_attributes.items():
     print(item)
 '''
 
@@ -106,34 +61,4 @@ for student in all_users:
         print(student.name, "scored a zero out of {} on this assignment.".format(inv_species.points_possible))
     else:
         pass
-'''
-
-#testing page attributes
-'''
-python_course = canvas.get_course(37768)
-all_pages = python_course.get_pages()
-page_attributes = vars(all_pages[0])
-for item in page_attributes.items():
-    print(item)
-'''
-
-'''
-Page Attributes
-'_requester', <canvasapi.requester.Requester object at 0x000001B2DA7E5FA0>)
-'title'
-'created_at'
-'created_at_date'
-'url'
-'editing_roles'
-'page_id'
-'last_edited_by'
-'published'
-'hide_from_students'
-'front_page'
-'html_url'
-'todo_date'
-'updated_at'
-'updated_at_date'
-'locked_for_user'
-'course_id'
 '''

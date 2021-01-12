@@ -1,4 +1,4 @@
-import canvasapi
+import canvasapi, smtplib, getpass
 import quiz_methods
 
 def display_modules(current_course):
@@ -150,3 +150,47 @@ def copy_module(current_course):
         '''
     
     new_module.edit(module={'unlock_at':template_module.unlock_at, 'position':template_module.position + 1, 'require_sequential_progress':template_module.require_sequential_progress, 'publish_final_grade':template_module.publish_final_grade, 'published':template_module.published})
+
+def missing_assignment_report(current_course, all_students, current_module):
+    """Method for generating a report of all missing assignments for the current module and emailing them to the teacher."""
+    message = """Subject: Missing Assignment Report
+
+Missing Assignment report for: \n{}\n""".format(current_module.name)
+
+    all_assignments = current_module.get_module_items() #generate a list of all items in the current module
+
+    #if the item is an assignment or quiz modify the email message to include
+    #the assignment name and students with no submission
+    for assignment in all_assignments:
+        if assignment.type == 'Assignment':
+            current = current_course.get_assignment(assignment.content_id)
+            message += '\n' + assignment.title
+            for student in all_students:
+                submission = current.get_submission(student.id)
+                if submission.workflow_state == 'unsubmitted':
+                    message += '\n\t' + student.sortable_name + submission.workflow_state
+            break
+        elif assignment.type == 'Quiz':
+            print(assignment.title)
+
+    #TODO: generate an email to a specified teacher containing the list of students for each assignment/quiz
+    smtpObj = smtplib.SMTP('smtp.office365.com', 587)
+    smtpObj.ehlo()
+    smtpObj.starttls()
+
+    authenticated = True
+    while authenticated:
+        try:
+            username = input("Username: ").strip().lower() + '@sacs.k12.in.us'
+            password = getpass.getpass("Password: ").strip()
+
+            smtpObj.login(username, password)
+
+            smtpObj.sendmail(username, username, message)
+
+            smtpObj.quit()
+            authenticated = False
+
+        except smtplib.SMTPAuthenticationError:
+            print("Incorrect username/password")
+            smtpObj.quit()
