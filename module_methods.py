@@ -1,4 +1,4 @@
-import canvasapi, smtplib, getpass
+import canvasapi, smtplib, getpass, progress.bar
 import quiz_methods
 
 def display_modules(current_course):
@@ -151,29 +151,61 @@ def copy_module(current_course):
     
     new_module.edit(module={'unlock_at':template_module.unlock_at, 'position':template_module.position + 1, 'require_sequential_progress':template_module.require_sequential_progress, 'publish_final_grade':template_module.publish_final_grade, 'published':template_module.published})
 
-def missing_assignment_report(current_course, all_students, current_module):
+def missing_assignment_report(current_course, count_students, all_students, current_module):
     """Method for generating a report of all missing assignments for the current module and emailing them to the teacher."""
     message = """Subject: Missing Assignment Report
 
-Missing Assignment report for: \n{}\n""".format(current_module.name)
+Missing Assignment report for: {}\n""".format(current_module.name)
 
     all_assignments = current_module.get_module_items() #generate a list of all items in the current module
+    count = 0
+    for assignment in all_assignments:
+        count += 1
 
     #if the item is an assignment or quiz modify the email message to include
     #the assignment name and students with no submission
+    #assignments_bar = progress.bar.ChargingBar('Checking assignments...', max=count)
     for assignment in all_assignments:
+        '''
         if assignment.type == 'Assignment':
             current = current_course.get_assignment(assignment.content_id)
-            message += '\n' + assignment.title
+            message += '\n\n' + assignment.title
+            students_bar = progress.bar.ChargingBar('Checking students...', max=count_students)
             for student in all_students:
                 submission = current.get_submission(student.id)
                 if submission.workflow_state == 'unsubmitted':
-                    message += '\n\t' + student.sortable_name + submission.workflow_state
+                    message += '\n\t' + student.sortable_name + "\t" + submission.workflow_state
+                students_bar.next()
+            students_bar.finish()
+        '''
+        if assignment.type == 'Quiz':
+            current_quiz = current_course.get_quiz(assignment.content_id)
+            print(current_quiz.title)
+            submissions = current_quiz.get_submissions()
+            '''
+            attributes = vars(submissions[0])
+            for item in attributes.items():
+                print(item)
+            '''
+            #message += '\n\n' + assignment.title
+            #students_bar = progress.bar.ChargingBar('Checking students...', max=count_students)
+            for submission in submissions:
+                print(submission.user_id, submission.overdue_and_needs_submission, submission.score, submission.workflow_state)
+            '''
+            print(submissions[0].attempts_left, type(submissions[0].attempts_left))
+            print(submissions[0].overdue_and_needs_submission, type(submissions[0].overdue_and_needs_submission))
+            print(submissions[0].workflow_state, type(submissions[0].workflow_state))
+            print(submissions[0].score, type(submissions[0].score))
+            '''
             break
-        elif assignment.type == 'Quiz':
-            print(assignment.title)
+                #students_bar.next()
+            #students_bar.finish()
+        #assignments_bar.next()
+    #assignments_bar.finish()
+    #print(message)
 
     #TODO: generate an email to a specified teacher containing the list of students for each assignment/quiz
+    '''
     smtpObj = smtplib.SMTP('smtp.office365.com', 587)
     smtpObj.ehlo()
     smtpObj.starttls()
@@ -194,3 +226,4 @@ Missing Assignment report for: \n{}\n""".format(current_module.name)
         except smtplib.SMTPAuthenticationError:
             print("Incorrect username/password")
             smtpObj.quit()
+    '''

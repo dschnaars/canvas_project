@@ -40,7 +40,7 @@ while user_choice not in ['q', 'Q', 'quit', 'Quit']:
         """Generate a missing assignment report for the current module and have it emailed to the teacher."""
         module_methods.display_modules(current_course)
         current_module = module_methods.set_module(current_course)
-        module_methods.missing_assignment_report(current_course, all_students, current_module)
+        module_methods.missing_assignment_report(current_course, count, all_students, current_module)
         #pass
 
 '''
