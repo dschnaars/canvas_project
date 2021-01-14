@@ -157,52 +157,17 @@ def missing_assignment_report(current_course, count_students, all_students, curr
 
 Missing Assignment report for: {}\n""".format(current_module.name)
 
-    all_assignments = current_module.get_module_items() #generate a list of all items in the current module
-    count = 0
-    for assignment in all_assignments:
-        count += 1
-
-    #if the item is an assignment or quiz modify the email message to include
-    #the assignment name and students with no submission
-    #assignments_bar = progress.bar.ChargingBar('Checking assignments...', max=count)
-    for assignment in all_assignments:
+    #students_bar = progress.bar.ChargingBar('Checking students...', max = count_students)
+    attributes = vars(all_students[0])
+    for item in attributes.items():
+        print(item)
         '''
-        if assignment.type == 'Assignment':
-            current = current_course.get_assignment(assignment.content_id)
-            message += '\n\n' + assignment.title
-            students_bar = progress.bar.ChargingBar('Checking students...', max=count_students)
-            for student in all_students:
-                submission = current.get_submission(student.id)
-                if submission.workflow_state == 'unsubmitted':
-                    message += '\n\t' + student.sortable_name + "\t" + submission.workflow_state
-                students_bar.next()
-            students_bar.finish()
+        attributes = vars(missing_assignments[0])
+        for item in attributes.items():
+            print(item)
         '''
-        if assignment.type == 'Quiz':
-            current_quiz = current_course.get_quiz(assignment.content_id)
-            print(current_quiz.title)
-            submissions = current_quiz.get_submissions()
-            '''
-            attributes = vars(submissions[0])
-            for item in attributes.items():
-                print(item)
-            '''
-            #message += '\n\n' + assignment.title
-            #students_bar = progress.bar.ChargingBar('Checking students...', max=count_students)
-            for submission in submissions:
-                print(submission.user_id, submission.overdue_and_needs_submission, submission.score, submission.workflow_state)
-            '''
-            print(submissions[0].attempts_left, type(submissions[0].attempts_left))
-            print(submissions[0].overdue_and_needs_submission, type(submissions[0].overdue_and_needs_submission))
-            print(submissions[0].workflow_state, type(submissions[0].workflow_state))
-            print(submissions[0].score, type(submissions[0].score))
-            '''
-            break
-                #students_bar.next()
-            #students_bar.finish()
-        #assignments_bar.next()
-    #assignments_bar.finish()
-    #print(message)
+        #students_bar.next()
+    #students_bar.finish()
 
     #TODO: generate an email to a specified teacher containing the list of students for each assignment/quiz
     '''
