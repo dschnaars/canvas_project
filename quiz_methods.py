@@ -1,4 +1,4 @@
-import canvasapi
+import canvasapi, csv
 import module_methods
 
 def copy_quiz(current_course, new_module, item):
@@ -68,7 +68,7 @@ def set_extensions(current_course):
 def keep_high_checkpoint(current_course, count, all_students):
     """Method for examining Checkpoint A and B and keeping high score while excusing low."""
 
-    #TODO: gather all submissions for a given quiz
+    #TODO: gather all submissions for the given quizzes in question
     current_module = module_methods.set_module(current_course)
     module_methods.display_module_items(current_module)
     checkpoint_a_id = int(input("Enter the Quiz ID number for Checkpoint A: ").strip())
@@ -85,3 +85,36 @@ def keep_high_checkpoint(current_course, count, all_students):
         checkpoint_a = 0 #assign initial value of 0 for each quiz.score
         checkpoint_b = 0
 
+def parent_test_report(current_course, current_module):
+    """Method for reporting mastery, passing, or failing test results to parents."""
+
+    #Create a dictionary of all students and parent emails
+    students_dictionary = {}
+    with open('bio_acad.csv', 'r') as csv_read:
+        students = csv.reader(csv_read)
+
+        next(students) #skip the header row
+
+        for student in students:
+            students_dictionary[student[2]] = {'name':student[1], student[5]:student[6], student[7]:student[8]}
+
+    #Display all tests/quizzes in this module and choose the test of interest
+    all_items = current_module.get_module_items()
+    for item in all_items:
+        if item.type == 'Quiz':
+            print(item, item.content_id)
+    test_choice = int(input("Please type in the Quiz ID for the test of interest:\n>>> "))
+    current_quiz = current_course.get_quiz(test_choice)
+    submissions = current_quiz.get_submissions()
+    
+    #Iterate through submissions and add score to each student in the dictionary
+    for submission in submissions:
+        students_dictionary[str(submission.user_id)]['score'] = submission.score
+
+    for user in students_dictionary:
+        print(students_dictionary[user]['name'], students_dictionary[user]['score'])
+    '''
+    attributes = vars(submissions[0])
+    for item in attributes.items():
+        print(item)
+    '''

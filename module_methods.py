@@ -12,7 +12,7 @@ def set_module(current_course):
     #TODO: add a check to verify that the module number added is actually in the teacher's list of modules. 
     valid = True
     while valid:
-        module_number = int(input("Please enter the module number of interest.\n>>> ").strip())
+        module_number = int(input("\nPlease enter the module number of interest.\n>>> ").strip())
         try:
             module = current_course.get_module(module_number)
             valid = False
