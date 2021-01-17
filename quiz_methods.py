@@ -96,7 +96,13 @@ def parent_test_report(current_course, current_module):
         next(students) #skip the header row
 
         for student in students:
-            students_dictionary[student[2]] = {'name':student[1], student[5]:student[6], student[7]:student[8]}
+            students_dictionary[student[2]] = {
+                'name':student[1], 
+                'Parent Name 1':student[5],
+                'Parent Email 1':student[6], 
+                'Parent Name 2':student[7],
+                'Parent Email 2':student[8]
+                }
 
     #Display all tests/quizzes in this module and choose the test of interest
     all_items = current_module.get_module_items()
@@ -112,7 +118,7 @@ def parent_test_report(current_course, current_module):
         students_dictionary[str(submission.user_id)]['score'] = submission.score
 
     for user in students_dictionary:
-        print(students_dictionary[user]['name'], students_dictionary[user]['score'])
+        print(students_dictionary[user]['name'], students_dictionary[user]['score'], students_dictionary[user]['Parent Name 1'])
     '''
     attributes = vars(submissions[0])
     for item in attributes.items():
