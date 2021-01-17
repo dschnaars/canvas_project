@@ -1,4 +1,5 @@
 import canvasapi
+import module_methods
 
 def copy_quiz(current_course, new_module, item):
     """Method for copying a quiz and all of its attributes."""
@@ -63,3 +64,24 @@ def copy_quiz(current_course, new_module, item):
 def set_extensions(current_course):
     """Method for setting quiz extensions for specified students."""
     pass
+
+def keep_high_checkpoint(current_course, count, all_students):
+    """Method for examining Checkpoint A and B and keeping high score while excusing low."""
+
+    #TODO: gather all submissions for a given quiz
+    current_module = module_methods.set_module(current_course)
+    module_methods.display_module_items(current_module)
+    checkpoint_a_id = int(input("Enter the Quiz ID number for Checkpoint A: ").strip())
+    checkpoint_b_id = int(input("Enter the Quiz ID number for Checkpoint B: ").strip())
+
+    set_checkpoint_a = current_course.get_quiz(checkpoint_a_id)
+    set_checkpoint_b = current_course.get_quiz(checkpoint_b_id)
+
+    checkpoint_a_submissions = set_checkpoint_a.get_submissions()
+    checkpoint_b_submissions = set_checkpoint_b.get_submissions()
+
+    #TODO: Iterate through each student in the class and get their scores for each test
+    for student in all_students:
+        checkpoint_a = 0 #assign initial value of 0 for each quiz.score
+        checkpoint_b = 0
+
