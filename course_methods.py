@@ -45,7 +45,7 @@ def create_users_CSV(current_course):
     outputwriter.writerow(['Sortable Name', 'Name', 'ID', 'email', 'Quiz Extensions', 'Parent Name 1', 'Parent Email 1', 'Parent Name 2', 'Parent Email 2'])
 
     for student in all_students:
-        outputwriter.writerow([student.sortable_name, student.name, int(student.id), student.email, None, None, None, None, None])
+        outputwriter.writerow([student.sortable_name, student.name, int(student.id), student.email, 0, None, None, None, None])
     students_file.close()
 
 def update_course(current_course):
