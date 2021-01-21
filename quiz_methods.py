@@ -1,4 +1,5 @@
-import canvasapi
+import canvasapi, csv, smtplib, getpass
+import module_methods
 
 def copy_quiz(current_course, new_module, item):
     """Method for copying a quiz and all of its attributes."""
@@ -63,3 +64,121 @@ def copy_quiz(current_course, new_module, item):
 def set_extensions(current_course):
     """Method for setting quiz extensions for specified students."""
     pass
+
+def keep_high_checkpoint(current_course, count, all_students):
+    """Method for examining Checkpoint A and B and keeping high score while excusing low."""
+
+    #TODO: gather all submissions for the given quizzes in question
+    current_module = module_methods.set_module(current_course)
+    module_methods.display_module_items(current_module)
+    checkpoint_a_id = int(input("Enter the Quiz ID number for Checkpoint A: ").strip())
+    checkpoint_b_id = int(input("Enter the Quiz ID number for Checkpoint B: ").strip())
+
+    set_checkpoint_a = current_course.get_quiz(checkpoint_a_id)
+    set_checkpoint_b = current_course.get_quiz(checkpoint_b_id)
+
+    checkpoint_a_submissions = set_checkpoint_a.get_submissions()
+    checkpoint_b_submissions = set_checkpoint_b.get_submissions()
+
+    #TODO: Iterate through each student in the class and get their scores for each test
+    for student in all_students:
+        checkpoint_a = 0 #assign initial value of 0 for each quiz.score
+        checkpoint_b = 0
+
+def parent_test_report(current_course, current_module):
+    """Method for reporting mastery, passing, or failing test results to parents."""
+
+    #Create a dictionary of all students and parent emails
+    students_dictionary = {}
+    with open('bio_acad.csv', 'r') as csv_read:
+        students = csv.reader(csv_read)
+
+        next(students) #skip the header row
+
+        for student in students:
+            students_dictionary[student[2]] = {
+                'name':student[1], 
+                'Parent Name 1':student[5],
+                'Parent Email 1':student[6], 
+                'Parent Name 2':student[7],
+                'Parent Email 2':student[8]
+                }
+
+    #Display all tests/quizzes in this module and choose the test of interest
+    all_items = current_module.get_module_items()
+    for item in all_items:
+        if item.type == 'Quiz':
+            print(item.title, item.content_id)
+    test_choice = int(input("Please type in the Quiz ID for the test of interest:\n>>> "))
+    current_quiz = current_course.get_quiz(test_choice)
+    points_possible = current_quiz.points_possible
+    mastery = points_possible * 0.85
+    passing = points_possible * 0.60
+
+    submissions = current_quiz.get_submissions()
+    
+    #Iterate through submissions and add score to each student in the dictionary
+    for submission in submissions:
+        students_dictionary[str(submission.user_id)]['score'] = submission.score
+
+    #Create an smtp object for emailing parents of each student
+    smtpObj = smtplib.SMTP('smtp.office365.com', 587)
+    smtpObj.ehlo()
+    smtpObj.starttls()
+
+    authenticated = True
+    while authenticated:
+        try:
+            username = input("Username: ").strip().lower() + '@sacs.k12.in.us'
+            password = getpass.getpass("Password: ").strip()
+
+            smtpObj.login(username, password)
+
+            authenticated = False
+
+        except smtplib.SMTPAuthenticationError:
+            print("Incorrect username/password")
+            smtpObj.quit()
+
+    #Determine which students achieved master, passed, failed, or have not yet taken the assessment.
+    for user in students_dictionary:
+        if 'score' in students_dictionary[user]:
+            percent_score = int(students_dictionary[user]['score']) / points_possible * 100
+            if students_dictionary[user]['score'] >= mastery:
+                message = """Subject: {} Biology Test Grade 
+
+{},\n\nThis is Mr. Schnaars, your student's Biology teacher at HHS. I wanted to follow up from our test today
+and let you know that {} scored {} percent on the {} test today, meaning {} achieved Mastery. Please encourage
+them to keep up the hard work and studying in preparation for our tests, and reach out to me if you have any 
+questions or concerns.\n\nThanks,\n\nDaniel Schnaars\nBiology Teacher, Homestead High School
+                """.format(students_dictionary[user]['name'], students_dictionary[user]['Parent Name 1'],
+                students_dictionary[user]['name'], percent_score, current_quiz.title, students_dictionary[user]['name'])
+                print(students_dictionary[user]['name'], "achieved mastery.", students_dictionary[user]['score'])
+            
+            elif students_dictionary[user]['score'] >= passing:
+                message = """Subject: {} Biology Test Grade 
+
+{},\n\nThis is Mr. Schnaars, your student's Biology teacher at HHS. I wanted to follow up from our test today
+and let you know that {} scored {} percent on the {} test today, meaning that while {} passed the test, they failed to achieved Mastery. Please encourage
+them to study the material and complete correctives for this test prior to Checkpoint B, and reach out to me if you have any 
+questions or concerns.\n\nThanks,\n\nDaniel Schnaars\nBiology Teacher, Homestead High School
+                """.format(students_dictionary[user]['name'], students_dictionary[user]['Parent Name 1'],
+                students_dictionary[user]['name'], percent_score, current_quiz.title, students_dictionary[user]['name'])
+                print(students_dictionary[user]['name'], "passed their test.", students_dictionary[user]['score'])
+            
+            else:
+                print(students_dictionary[user]['name'], "did not pass their test.", students_dictionary[user]['score'])
+            
+            smtpObj.sendmail(username, username, message)
+        
+        else:
+            print(students_dictionary[user]['name'], "has not taken this test yet.")
+        break
+
+    smtpObj.quit()
+
+    '''
+    attributes = vars(submissions[0])
+    for item in attributes.items():
+        print(item)
+    '''
