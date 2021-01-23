@@ -98,10 +98,14 @@ def parent_test_report(current_course, current_module):
         for student in students:
             students_dictionary[student[2]] = {
                 'name':student[1], 
-                'Parent Name 1':student[5],
-                'Parent Email 1':student[6], 
-                'Parent Name 2':student[7],
-                'Parent Email 2':student[8]
+                'parent_1':student[5],
+                'parent_1_email':student[6], 
+                'parent_2':student[7],
+                'parent_2_email':student[8],
+                'first_only':student[9],
+                'pro_1':student[10],
+                'pro_2':student[11],
+                'pro_3':student[12]
                 }
 
     #Display all tests/quizzes in this module and choose the test of interest
@@ -110,6 +114,7 @@ def parent_test_report(current_course, current_module):
         if item.type == 'Quiz':
             print(item.title, item.content_id)
     test_choice = int(input("Please type in the Quiz ID for the test of interest:\n>>> "))
+    check_b_date = input("Please enter a date for Checkpoint B:\n>>>")
     current_quiz = current_course.get_quiz(test_choice)
     points_possible = current_quiz.points_possible
     mastery = points_possible * 0.85
@@ -141,6 +146,7 @@ def parent_test_report(current_course, current_module):
             smtpObj.quit()
 
     #Determine which students achieved master, passed, failed, or have not yet taken the assessment.
+    test_counter = 0
     for user in students_dictionary:
         if 'score' in students_dictionary[user]:
             percent_score = int(students_dictionary[user]['score']) / points_possible * 100
@@ -151,9 +157,13 @@ def parent_test_report(current_course, current_module):
 and let you know that {} scored {} percent on the {} test today, meaning {} achieved Mastery. Please encourage
 them to keep up the hard work and studying in preparation for our tests, and reach out to me if you have any 
 questions or concerns.\n\nThanks,\n\nDaniel Schnaars\nBiology Teacher, Homestead High School
-                """.format(students_dictionary[user]['name'], students_dictionary[user]['Parent Name 1'],
-                students_dictionary[user]['name'], percent_score, current_quiz.title, students_dictionary[user]['name'])
-                print(students_dictionary[user]['name'], "achieved mastery.", students_dictionary[user]['score'])
+                """.format(
+                    students_dictionary[user]['name'], 
+                    students_dictionary[user]['Parent Name 1'],
+                    students_dictionary[user]['name'], 
+                    percent_score, 
+                    current_quiz.title, 
+                    students_dictionary[user]['name'])
             
             elif students_dictionary[user]['score'] >= passing:
                 message = """Subject: {} Biology Test Grade 
@@ -162,18 +172,36 @@ questions or concerns.\n\nThanks,\n\nDaniel Schnaars\nBiology Teacher, Homestead
 and let you know that {} scored {} percent on the {} test today, meaning that while {} passed the test, they failed to achieved Mastery. Please encourage
 them to study the material and complete correctives for this test prior to Checkpoint B, and reach out to me if you have any 
 questions or concerns.\n\nThanks,\n\nDaniel Schnaars\nBiology Teacher, Homestead High School
-                """.format(students_dictionary[user]['name'], students_dictionary[user]['Parent Name 1'],
-                students_dictionary[user]['name'], percent_score, current_quiz.title, students_dictionary[user]['name'])
-                print(students_dictionary[user]['name'], "passed their test.", students_dictionary[user]['score'])
+                """.format(
+                    students_dictionary[user]['name'], 
+                    students_dictionary[user]['Parent Name 1'],
+                    students_dictionary[user]['name'], 
+                    percent_score, 
+                    current_quiz.title, 
+                    students_dictionary[user]['name'])
             
-            else:
-                print(students_dictionary[user]['name'], "did not pass their test.", students_dictionary[user]['score'])
+            elif students_dictionary[user]['score'] < passing:
+                message = f"""Subject: {students_dictionary[user]['name']} Biology Test Grade 
+
+{students_dictionary[user]['Parent Name 1']},\n\n\tThis is Mr. Schnaars, and I am {students_dictionary[user]['first_only']}'s Biology 
+teacher at HHS. I wanted to follow up from our test today and let you know that {students_dictionary[user]['first_only']} scored 
+{percent_score} percent on the {current_quiz.title} test today, meaning that {students_dictionary[user]['pro_1']} did not pass the test.
+{students_dictionary[user]['first_only']} will have a chance to replace this score with a higher one when we take Checkpoint B.
+Please encourage {students_dictionary[user]['pro_2']} to study the material from this unit and complete correctives for this test prior 
+to Checkpoint B on {check_b_date}, and reach out to me if you have any questions or concerns.
+\nThanks,\n\nDaniel Schnaars\ndschnaars@sacs.k12.in.us\nBiology Teacher, Homestead High School
+                """
             
+            #Send an email to the parent name 1 on file; will need to build in a check here to send to each parent if 2 listed
             smtpObj.sendmail(username, username, message)
+            test_counter += 1
         
         else:
             print(students_dictionary[user]['name'], "has not taken this test yet.")
-        break
+
+        #test loop to keep me from accidentally sending myself 100 emails...
+        if test_counter == 5:
+            break
 
     smtpObj.quit()
 

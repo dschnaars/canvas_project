@@ -1,4 +1,4 @@
-import canvasapi, smtplib, getpass, progress.bar
+import canvasapi
 import quiz_methods
 
 def display_modules(current_course):
@@ -12,7 +12,7 @@ def set_module(current_course):
     #TODO: add a check to verify that the module number added is actually in the teacher's list of modules. 
     valid = True
     while valid:
-        module_number = int(input("\nPlease enter the module number of interest.\n>>> ").strip())
+        module_number = int(input("Please enter the module number of interest.\n>>> ").strip())
         try:
             module = current_course.get_module(module_number)
             valid = False
@@ -135,7 +135,6 @@ def copy_module(current_course):
             #if item.completion_requirement['type'] == 'min_score':
                 #'completion_requirement':{
                     #'min_score':item.completion_requirement['min_score']},
-            print(item.title, item.completion_requirement['type'])
         elif item.type == 'Quiz':
             quiz_methods.copy_quiz(current_course, new_module, item)
         elif item.type == 'Page':
@@ -150,45 +149,3 @@ def copy_module(current_course):
         '''
     
     new_module.edit(module={'unlock_at':template_module.unlock_at, 'position':template_module.position + 1, 'require_sequential_progress':template_module.require_sequential_progress, 'publish_final_grade':template_module.publish_final_grade, 'published':template_module.published})
-
-def missing_assignment_report(current_course, count_students, all_students, current_module):
-    """Method for generating a report of all missing assignments for the current module and emailing them to the teacher."""
-    message = """Subject: Missing Assignment Report
-
-Missing Assignment report for: {}\n""".format(current_module.name)
-
-    #students_bar = progress.bar.ChargingBar('Checking students...', max = count_students)
-    attributes = vars(all_students[0])
-    for item in attributes.items():
-        print(item)
-        '''
-        attributes = vars(missing_assignments[0])
-        for item in attributes.items():
-            print(item)
-        '''
-        #students_bar.next()
-    #students_bar.finish()
-
-    #TODO: generate an email to a specified teacher containing the list of students for each assignment/quiz
-    '''
-    smtpObj = smtplib.SMTP('smtp.office365.com', 587)
-    smtpObj.ehlo()
-    smtpObj.starttls()
-
-    authenticated = True
-    while authenticated:
-        try:
-            username = input("Username: ").strip().lower() + '@sacs.k12.in.us'
-            password = getpass.getpass("Password: ").strip()
-
-            smtpObj.login(username, password)
-
-            smtpObj.sendmail(username, username, message)
-
-            smtpObj.quit()
-            authenticated = False
-
-        except smtplib.SMTPAuthenticationError:
-            print("Incorrect username/password")
-            smtpObj.quit()
-    '''
