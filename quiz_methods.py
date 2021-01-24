@@ -151,49 +151,47 @@ def parent_test_report(current_course, current_module):
         if 'score' in students_dictionary[user]:
             percent_score = int(students_dictionary[user]['score']) / points_possible * 100
             if students_dictionary[user]['score'] >= mastery:
-                message = """Subject: {} Biology Test Grade 
-
-{},\n\nThis is Mr. Schnaars, your student's Biology teacher at HHS. I wanted to follow up from our test today
-and let you know that {} scored {} percent on the {} test today, meaning {} achieved Mastery. Please encourage
-them to keep up the hard work and studying in preparation for our tests, and reach out to me if you have any 
-questions or concerns.\n\nThanks,\n\nDaniel Schnaars\nBiology Teacher, Homestead High School
-                """.format(
-                    students_dictionary[user]['name'], 
-                    students_dictionary[user]['Parent Name 1'],
-                    students_dictionary[user]['name'], 
-                    percent_score, 
-                    current_quiz.title, 
-                    students_dictionary[user]['name'])
+                message = (
+                    f"Subject: {students_dictionary[user]['name']} Biology Test Grade\n\n"\
+                    f"{students_dictionary[user]['parent_1']},\n\n\tThis is Mr. Schnaars, and I am "\
+                    f"{students_dictionary[user]['first_only']}'s Biology teacher at HHS. I wanted to follow up from our test today and "\
+                    f"let you know that {students_dictionary[user]['first_only']} scored {percent_score} percent on the "\
+                    f"{current_quiz.title} test today, meaning {students_dictionary[user]['pro_1']} not only passed the test, but "\
+                    f"achieved the HHS standard for Mastery. {students_dictionary[user]['first_only']} may still take Checkpoint B on "\
+                    f"{check_b_date} to try and achieve a higher score, but is not required to do so. Please encourage "\
+                    f"{students_dictionary[user]['pro_2']} to continue to prepare for future tests this semester the way "\
+                    f"{students_dictionary[user]['pro_1']} did for this one, and reach out to me if you have any questions or concerns."\
+                    f"\n\nThanks,\n\nDaniel Schnaars\ndschnaars@sacs.k12.in.us\nBiology Teacher, Homestead High School"
+                )
             
             elif students_dictionary[user]['score'] >= passing:
-                message = """Subject: {} Biology Test Grade 
+                message = f"""Subject: {students_dictionary[user]['name']} Biology Test Grade 
 
-{},\n\nThis is Mr. Schnaars, your student's Biology teacher at HHS. I wanted to follow up from our test today
-and let you know that {} scored {} percent on the {} test today, meaning that while {} passed the test, they failed to achieved Mastery. Please encourage
-them to study the material and complete correctives for this test prior to Checkpoint B, and reach out to me if you have any 
-questions or concerns.\n\nThanks,\n\nDaniel Schnaars\nBiology Teacher, Homestead High School
-                """.format(
-                    students_dictionary[user]['name'], 
-                    students_dictionary[user]['Parent Name 1'],
-                    students_dictionary[user]['name'], 
-                    percent_score, 
-                    current_quiz.title, 
-                    students_dictionary[user]['name'])
+
+{students_dictionary[user]['parent_1']},\n\n\tThis is Mr. Schnaars, and I am {students_dictionary[user]['first_only']}'s Biology 
+teacher at HHS. I wanted to follow up from our test today and let you know that {students_dictionary[user]['first_only']} scored 
+{percent_score} percent on the {current_quiz.title} test today, meaning that while {students_dictionary[user]['pro_1']} passed the test, but did not achieve the HHS standard for Mastery.
+{students_dictionary[user]['first_only']} will have another chance to achieve Mastery and replace this score with a higher one when we take our Checkpoint B assessment.
+Please encourage {students_dictionary[user]['pro_2']} to study the material from this unit and complete the correctives assignment for this test prior 
+to Checkpoint B on {check_b_date}, and reach out to me if you have any questions or concerns.
+\nThanks,\n\nDaniel Schnaars\ndschnaars@sacs.k12.in.us\nBiology Teacher, Homestead High School
+                """
             
             elif students_dictionary[user]['score'] < passing:
                 message = f"""Subject: {students_dictionary[user]['name']} Biology Test Grade 
 
-{students_dictionary[user]['Parent Name 1']},\n\n\tThis is Mr. Schnaars, and I am {students_dictionary[user]['first_only']}'s Biology 
+{students_dictionary[user]['parent_1']},\n\n\tThis is Mr. Schnaars, and I am {students_dictionary[user]['first_only']}'s Biology 
 teacher at HHS. I wanted to follow up from our test today and let you know that {students_dictionary[user]['first_only']} scored 
 {percent_score} percent on the {current_quiz.title} test today, meaning that {students_dictionary[user]['pro_1']} did not pass the test.
-{students_dictionary[user]['first_only']} will have a chance to replace this score with a higher one when we take Checkpoint B.
-Please encourage {students_dictionary[user]['pro_2']} to study the material from this unit and complete correctives for this test prior 
+{students_dictionary[user]['first_only']} will have a chance to replace this score with a higher one when we take our Checkpoint B assessment.
+Please encourage {students_dictionary[user]['pro_2']} to study the material from this unit and complete the correctives assignment for this test prior 
 to Checkpoint B on {check_b_date}, and reach out to me if you have any questions or concerns.
 \nThanks,\n\nDaniel Schnaars\ndschnaars@sacs.k12.in.us\nBiology Teacher, Homestead High School
                 """
             
             #Send an email to the parent name 1 on file; will need to build in a check here to send to each parent if 2 listed
             smtpObj.sendmail(username, username, message)
+            #possible error here with an invalid email 'smtplib.SMTPRecipientsRefused'
             test_counter += 1
         
         else:
