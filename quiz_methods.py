@@ -90,18 +90,20 @@ def parent_test_report(current_course, current_module):
 
     #Create a dictionary of all students and parent emails
     students_dictionary = {}
-    with open('bio_acad.csv', 'r') as csv_read:
+    filename = input("Enter filename to use for generating student data:\n>>> ").lower().strip()
+    with open(filename, 'r') as csv_read:
         students = csv.reader(csv_read)
 
         next(students) #skip the header row
 
         for student in students:
             students_dictionary[student[2]] = {
+                'sortable_name':student[0],
                 'name':student[1], 
                 'parent_1':student[5],
-                'parent_1_email':student[6], 
+                'parent_email1':student[6], 
                 'parent_2':student[7],
-                'parent_2_email':student[8],
+                'parent_email2':student[8],
                 'first_only':student[9],
                 'pro_1':student[10],
                 'pro_2':student[11],
@@ -117,7 +119,17 @@ def parent_test_report(current_course, current_module):
     check_b_date = input("Please enter a date for Checkpoint B:\n>>>")
     current_quiz = current_course.get_quiz(test_choice)
     points_possible = current_quiz.points_possible
-    mastery = points_possible * 0.85
+    honors_or_acad = input("Is this report for Honors (H) or Academic (A)?\n>>> ").upper().strip()
+
+    if honors_or_acad == 'H':
+        mastery = points_possible * 0.87
+        email_mastery = '87'
+    elif honors_or_acad == 'A':
+        mastery = points_possible * 0.85
+        email_mastery = '85'
+    else:
+        print("No valid selection provided for 'Honors or Academic' class")
+        
     passing = points_possible * 0.60
 
     submissions = current_quiz.get_submissions()
@@ -146,18 +158,23 @@ def parent_test_report(current_course, current_module):
             smtpObj.quit()
 
     #Determine which students achieved master, passed, failed, or have not yet taken the assessment.
-    test_counter = 0
+    #test_counter = 0
+    no_test_taken = []
+    failed_parent_emails = []
+
     for user in students_dictionary:
         if 'score' in students_dictionary[user]:
-            percent_score = int(students_dictionary[user]['score']) / points_possible * 100
+            score = int(students_dictionary[user]['score'])
+            raw_score = score / points_possible * 100
+            percent_score = round(raw_score, 1)
             if students_dictionary[user]['score'] >= mastery:
                 message = (
                     f"Subject: {students_dictionary[user]['name']} Biology Test Grade\n\n"\
                     f"{students_dictionary[user]['parent_1']},\n\n\tThis is Mr. Schnaars, and I am "\
                     f"{students_dictionary[user]['first_only']}'s Biology teacher at HHS. I wanted to follow up from our test today and "\
                     f"let you know that {students_dictionary[user]['first_only']} scored {percent_score} percent on the "\
-                    f"{current_quiz.title} test today, meaning {students_dictionary[user]['pro_1']} not only passed the test, but "\
-                    f"achieved the HHS standard for Mastery. {students_dictionary[user]['first_only']} may still take Checkpoint B on "\
+                    f"{current_quiz.title} test today. This means {students_dictionary[user]['pro_1']} not only passed the test, but "\
+                    f"achieved the HHS standard for Mastery, {email_mastery}. {students_dictionary[user]['first_only']} may still take Checkpoint B on "\
                     f"{check_b_date} to try and achieve a higher score, but is not required to do so. Please encourage "\
                     f"{students_dictionary[user]['pro_2']} to continue to prepare for future tests this semester the way "\
                     f"{students_dictionary[user]['pro_1']} did for this one, and reach out to me if you have any questions or concerns."\
@@ -165,43 +182,59 @@ def parent_test_report(current_course, current_module):
                 )
             
             elif students_dictionary[user]['score'] >= passing:
-                message = f"""Subject: {students_dictionary[user]['name']} Biology Test Grade 
+                message = (
+                    f"Subject: {students_dictionary[user]['name']} Biology Test Grade\n\n"\
+                    f"{students_dictionary[user]['parent_1']},\n\n\tThis is Mr. Schnaars, and I am "\
+                    f"{students_dictionary[user]['first_only']}'s Biology teacher at HHS. I wanted to follow up from our test today and "\
+                    f"let you know that {students_dictionary[user]['first_only']} scored {percent_score} percent on the "\
+                    f"{current_quiz.title} test today. This means {students_dictionary[user]['pro_1']} passed the test, but "\
+                    f"did not achieve the HHS standard for Mastery, {email_mastery}. {students_dictionary[user]['first_only']} will have another chance to "\
+                    f"achieve Mastery and replace this score with a higher one when we take our Checkpoint B assessment. Please encourage "\
+                    f"{students_dictionary[user]['pro_2']} to study the material from this unit and complete the correctives assignment "\
+                    f"for this test prior to Checkpoint B on {check_b_date}. You can reach out to me if you have any questions or concerns. "\
+                    f"\n\nThanks,\n\nDaniel Schnaars\ndschnaars@sacs.k12.in.us\nBiology Teacher, Homestead High School"
+                )
 
-
-{students_dictionary[user]['parent_1']},\n\n\tThis is Mr. Schnaars, and I am {students_dictionary[user]['first_only']}'s Biology 
-teacher at HHS. I wanted to follow up from our test today and let you know that {students_dictionary[user]['first_only']} scored 
-{percent_score} percent on the {current_quiz.title} test today, meaning that while {students_dictionary[user]['pro_1']} passed the test, but did not achieve the HHS standard for Mastery.
-{students_dictionary[user]['first_only']} will have another chance to achieve Mastery and replace this score with a higher one when we take our Checkpoint B assessment.
-Please encourage {students_dictionary[user]['pro_2']} to study the material from this unit and complete the correctives assignment for this test prior 
-to Checkpoint B on {check_b_date}, and reach out to me if you have any questions or concerns.
-\nThanks,\n\nDaniel Schnaars\ndschnaars@sacs.k12.in.us\nBiology Teacher, Homestead High School
-                """
-            
             elif students_dictionary[user]['score'] < passing:
-                message = f"""Subject: {students_dictionary[user]['name']} Biology Test Grade 
-
-{students_dictionary[user]['parent_1']},\n\n\tThis is Mr. Schnaars, and I am {students_dictionary[user]['first_only']}'s Biology 
-teacher at HHS. I wanted to follow up from our test today and let you know that {students_dictionary[user]['first_only']} scored 
-{percent_score} percent on the {current_quiz.title} test today, meaning that {students_dictionary[user]['pro_1']} did not pass the test.
-{students_dictionary[user]['first_only']} will have a chance to replace this score with a higher one when we take our Checkpoint B assessment.
-Please encourage {students_dictionary[user]['pro_2']} to study the material from this unit and complete the correctives assignment for this test prior 
-to Checkpoint B on {check_b_date}, and reach out to me if you have any questions or concerns.
-\nThanks,\n\nDaniel Schnaars\ndschnaars@sacs.k12.in.us\nBiology Teacher, Homestead High School
-                """
+                message = (
+                    f"Subject: {students_dictionary[user]['name']} Biology Test Grade\n\n"\
+                    f"{students_dictionary[user]['parent_1']},\n\n\tThis is Mr. Schnaars, and I am "\
+                    f"{students_dictionary[user]['first_only']}'s Biology teacher at HHS. I wanted to follow up from our test today and "\
+                    f"let you know that {students_dictionary[user]['first_only']} scored {percent_score} percent on the "\
+                    f"{current_quiz.title} test today, meaning that {students_dictionary[user]['pro_1']} did not pass the test. "\
+                    f"{students_dictionary[user]['first_only']} will have a chance to replace this score with a higher one when we take "\
+                    f"our Checkpoint B assessment. Please encourage {students_dictionary[user]['pro_2']} to study the material from this "\
+                    f"unit and complete the correctives assignment for this test prior to Checkpoint B on {check_b_date}. You can reach out "\
+                    f"to me if you have any questions or concerns."\
+                    f"\n\nThanks,\n\nDaniel Schnaars\ndschnaars@sacs.k12.in.us\nBiology Teacher, Homestead High School"
+                )
             
             #Send an email to the parent name 1 on file; will need to build in a check here to send to each parent if 2 listed
-            smtpObj.sendmail(username, username, message)
-            #possible error here with an invalid email 'smtplib.SMTPRecipientsRefused'
-            test_counter += 1
+            try:
+                smtpObj.sendmail(username, students_dictionary[user]['parent_email1'], message)
+                print("successful email sent to", students_dictionary[user]['sortable_name'])
+            
+            except smtplib.SMTPRecipientsRefused:
+                failed_parent_emails.append([students_dictionary[user]['parent_1'], students_dictionary[user]['parent_email1']])
+            #smtpObj.sendmail(username, students_dictionary[user]['parent_email1'].strip(), message)
+            #test_counter += 1
         
         else:
-            print(students_dictionary[user]['name'], "has not taken this test yet.")
+            no_test_taken.append(students_dictionary[user]['sortable_name'])    
 
         #test loop to keep me from accidentally sending myself 100 emails...
-        if test_counter == 5:
-            break
+        #if test_counter == 15:
+            #break
 
     smtpObj.quit()
+
+    print("\nThe following students have not yet taken the test:")
+    for student in no_test_taken:
+        print(student)
+    
+    print("\nThe following parent emails were invalid:")
+    for parent in failed_parent_emails:
+        print(parent)
 
     '''
     attributes = vars(submissions[0])

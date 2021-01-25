@@ -1,110 +1,110 @@
-Sortable Name,Name,ID,email,Quiz Extensions,Parent Name 1,Parent Email 1,Parent Name 2,Parent Email 2,First Only,Pro1,Pro2,Pro3
-"Alba, Joaquin",Joaquin Alba,5455,joaquin.alba@students.sacs.k12.in.us,0,Ms. Robinson,trobinson123@ivytech.edu,Parent2,email2,Jack,he,him,his
+sortable_name,name,ID,student_email,quiz_extensions,parent_1,parent_email1,parent_2,parent_email2,first_only,pro_1,pro_2,pro_3
+"Alba, Joaquin",Joaquin Alba,5455,joaquin.alba@students.sacs.k12.in.us,0,Ms. Robinson,trobinson123@ivytech.edu,,,Jack,he,him,his
 "Anderson, Noah",Noah Anderson,4108,noah.anderson@students.sacs.k12.in.us,0,Ms. Anderson,t.anderson3@comcast.net,,,Noah,he,him,his
 "Antibus, Phillip",Phillip Antibus,5311,phillip.antibus@students.sacs.k12.in.us,0,Ms. Antibus,k.antibus@frontier.com,,,Phillip,he,him,his
-"Arkkelin, Noah",Noah Arkkelin,39283,noah.arkkelin@students.sacs.k12.in.us,0,Ms. Arkkelin,carriesch@rocketmail.com,,,Noah,he,him,his
+"Arkkelin, Noah",Noah Arkkelin,39283,noah.arkkelin@students.sacs.k12.in.us,1.5,Ms. Arkkelin,carriesch@rocketmail.com,,,Noah,he,him,his
 "Auxier, Mason",Mason Auxier,37940,mason.auxier@students.sacs.k12.in.us,0,Ms. Auxier,auxier98@gmail.com,,,Mason,he,him,his
-"Baker, Alivia",Alivia Baker,40108,alivia.baker@students.sacs.k12.in.us,0,,,,,,she,her,hers
-"Beall, Noah",Noah Beall,4096,noah.beall@students.sacs.k12.in.us,0,,,,,,he,him,his
-"Bell, Jackson",Jackson Bell,4111,jackson.bell@students.sacs.k12.in.us,0,,,,,,he,him,his
-"Bigelow, Brooke",Brooke Bigelow,39580,brooke.bigelow@students.sacs.k12.in.us,0,,,,,,she,her,hers
-"Blackstone, Alexia",Alexia Blackstone,40299,alexia.blackstone@sacs.k12.in.us,0,,,,,,she,her,hers
-"Blair, Jonathan",Jonathan Blair,3396,jonathan.blair@students.sacs.k12.in.us,0,,,,,,he,him,his
-"Bowes, Masen",Masen Bowes,4203,masen.bowes@students.sacs.k12.in.us,0,,,,,,he,him,his
-"Bowman, Ainsley",Ainsley Bowman,39537,ainsley.bowman@students.sacs.k12.in.us,0,,,,,,she,her,hers
-"Boykin, Maddox",Maddox Boykin,4473,maddox.boykin@students.sacs.k12.in.us,0,,,,,,he,him,his
-"Brent, Caroline",Caroline Brent,39706,caroline.brent@students.sacs.k12.in.us,0,,,,,,she,her,hers
-"Broekhuizen, Elizabeth",Elizabeth Broekhuizen,5447,elizabeth.broekhuizen@students.sacs.k12.in.us,0,,,,,,she,her,hers
-"Brown, Anderson",Anderson Brown,1919,anderson.brown@students.sacs.k12.in.us,0,,,,,,he,him,his
-"Brown, Hannah",Hannah Brown,4118,hannah.brown@students.sacs.k12.in.us,0,,,,,,she,her,hers
-"Casteel, Ashton",Ashton Casteel,41065,ashton.casteel@students.sacs.k12.in.us,0,,,,,,he,him,his
-"Clawson, David",David Clawson,38088,david.clawson@students.sacs.k12.in.us,0,,,,,,he,him,his
-"Cole, Samuel",Samuel Cole,39599,samuel.cole@students.sacs.k12.in.us,0,,,,,,he,him,his
-"Collins, Lucy",Lucy Collins,39299,lucy.collins@students.sacs.k12.in.us,0,,,,,,she,her,hers
-"Conrad, Jaylee",Jaylee Conrad,7694,jaylee.conrad@students.sacs.k12.in.us,0,,,,,,she,her,hers
-"Cornelio, Elizabeth",Elizabeth Cornelio,4085,elizabeth.cornelio@students.sacs.k12.in.us,0,,,,,,she,her,hers
-"Cummick, Maya",Maya Cummick,39296,maya.cummick@students.sacs.k12.in.us,0,,,,,,she,her,hers
-"Dauterman, Sarah",Sarah Dauterman,5427,sarah.dauterman@students.sacs.k12.in.us,0,,,,,,she,her,hers
-"Davis, Rachael",Rachael Davis,37942,rachael.davis@students.sacs.k12.in.us,0,,,,,,she,her,hers
-"Dorsey, Landon",Landon Dorsey,4090,landon.dorsey@students.sacs.k12.in.us,0,,,,,,he,him,his
-"Exford, Josiah",Josiah Exford,27364,josiah.exford@students.sacs.k12.in.us,0,,,,,,he,him,his
-"Fairgood, Leilani",Leilani Fairgood,9783,leilani.fairgood@students.sacs.k12.in.us,0,,,,,,she,her,hers
-"Fording, Myranda",Myranda Fording,3718,myranda.fording@students.sacs.k12.in.us,0,,,,,,she,her,hers
-"Fremion, Mason",Mason Fremion,4099,mason.fremion@students.sacs.k12.in.us,0,,,,,,he,him,his
-"Gerstorff, Aaleyiah",Aaleyiah Gerstorff,4102,aaleyiah.gerstorff@students.sacs.k12.in.us,0,,,,,,she,her,hers
-"Gilbert, Amanda",Amanda Gilbert,35126,amanda.gilbert@students.sacs.k12.in.us,0,,,,,,she,her,hers
-"Graber, Alex",Alex Graber,18308,alex.graber@students.sacs.k12.in.us,0,,,,,,he,him,his
-"Graf, Colette Lola",Colette Lola Graf,2844,colettelola.graf@students.sacs.k12.in.us,0,,,,,,she,her,hers
-"Gray, Macy",Macy Gray,5137,macy.gray@students.sacs.k12.in.us,0,,,,,,she,her,hers
-"Groover, Ethan",Ethan Groover,40174,ethan.groover@students.sacs.k12.in.us,0,,,,,,he,him,his
-"Guerrero, Raquel",Raquel Guerrero,4847,raquel.guerrero@students.sacs.k12.in.us,0,,,,,,she,her,hers
-"Guy, George",George Guy,5003,george.guy@students.sacs.k12.in.us,0,,,,,,he,him,his
-"Hauck, Jamari",Jamari Hauck,4917,jamari.hauck@students.sacs.k12.in.us,0,,,,,,he,him,his
-"Haught, Preston",Preston Haught,8382,preston.haught@students.sacs.k12.in.us,0,,,,,,he,him,his
-"Heard, Jakob",Jakob Heard,4500,jakob.heard@students.sacs.k12.in.us,0,,,,,,he,him,his
-"Hockemeyer, Vanessa",Vanessa Hockemeyer,27368,vanessa.hockemeyer@students.sacs.k12.in.us,0,,,,,,she,her,hers
-"Hoff, Sydney",Sydney Hoff,4242,sydney.hoff@students.sacs.k12.in.us,0,,,,,,she,her,hers
-"Hunter, Evan",Evan Hunter,4110,evan.hunter@students.sacs.k12.in.us,0,,,,,,he,him,his
-"Hurley, Cameron",Cameron Hurley,18635,cameron.hurley@students.sacs.k12.in.us,0,,,,,,he,him,his
-"Jernigan, Chase",Chase Jernigan,5068,chase.jernigan@students.sacs.k12.in.us,0,,,,,,he,him,his
-"Johnson, Karsten",Karsten Johnson,4236,karsten.johnson@students.sacs.k12.in.us,0,,,,,,he,him,his
-"Johnson, Tyrell",Tyrell Johnson,7708,tyrell.johnson@students.sacs.k12.in.us,0,,,,,,he,him,his
-"Kadel, Piper",Piper Kadel,35098,piper.kadel@students.sacs.k12.in.us,0,,,,,,she,her,hers
-"Kazee, Justiss",Justiss Kazee,33470,justiss.kazee@students.sacs.k12.in.us,0,,,,,,she,her,hers
-"Keiser, Kaelyn",Kaelyn Keiser,4212,kaelyn.Keiser@students.sacs.k12.in.us,0,,,,,,she,her,hers
-"Kennard, Ethan",Ethan Kennard,20460,ethan.kennard@students.sacs.k12.in.us,0,,,,,,he,him,his
-"Kinder, Owen",Owen Kinder,28714,owen.kinder@students.sacs.k12.in.us,0,,,,,,he,him,his
-"Kintz, Luke",Luke Kintz,4207,luke.kintz@students.sacs.k12.in.us,0,,,,,,he,him,his
-"Klukpui, Elorm",Elorm Klukpui,19175,elorm.klukpui@students.sacs.k12.in.us,0,,,,,,he,him,his
-"Knight, Alison",Alison Knight,4293,alison.knight@students.sacs.k12.in.us,0,,,,,,she,her,hers
-"Kreul, Malaynie",Malaynie Kreul,9621,malaynie.kreul@students.sacs.k12.in.us,0,,,,,,she,her,hers
-"Little, Wyatt",Wyatt Little,29747,wyatt.little@students.sacs.k12.in.us,0,,,,,,he,him,his
-"Lopez, Isriel",Isriel Lopez,41466,isriel.lopez@students.sacs.k12.in.us,0,,,,,,he,him,his
-"Louck, Noah",Noah Louck,36242,noah.louck@students.sacs.k12.in.us,0,,,,,,he,him,his
-"Majewski, Samantha",Samantha Majewski,4475,samantha.majewski@students.sacs.k12.in.us,0,,,,,,she,her,hers
-"Mangan, Jordan",Jordan Mangan,4144,jordan.mangan@students.sacs.k12.in.us,0,,,,,,he,him,his
-"Manson, Nicole",Nicole Manson,4244,nicole.manson@students.sacs.k12.in.us,0,,,,,,she,her,hers
-"Marinosci, Alexandria",Alexandria Marinosci,39765,alexandria.marinosci@students.sacs.k12.in.us,0,,,,,,she,her,hers
-"McConnell, Jozef",Jozef McConnell,5425,jozef.mcconnell@students.sacs.k12.in.us,0,,,,,,he,him,his
-"McCulloch, Charlotte",Charlotte McCulloch,11054,charlotte.mcculloch@students.sacs.k12.in.us,0,,,,,,she,her,hers
-"McMahan, Chesnee",Chesnee McMahan,7677,chesnee.mcmahan@students.sacs.k12.in.us,0,,,,,,she,her,hers
-"McMillan, Marshall",Marshall McMillan,4150,marshall.mcmillan@students.sacs.k12.in.us,0,,,,,,he,him,his
-"Mohammed, Abdullah",Abdullah Mohammed,40298,abdullah.mohammed@students.sacs.k12.in.us,0,,,,,,he,him,his
-"Munoz, Logan",Logan Munoz,40782,logan.munoz@students.sacs.k12.in.us,0,,,,,,he,him,his
-"Myers, Jacob",Jacob Myers,4210,jacob.myers@students.sacs.k12.in.us,0,,,,,,he,him,his
-"Myers, Rylan",Rylan Myers,39307,rylan.myers@students.sacs.k12.in.us,0,,,,,,she,her,hers
-"North, Travis",Travis North,4208,travis.north@students.sacs.k12.in.us,0,,,,,,he,him,his
-"Ousley, Anna",Anna Ousley,27199,anna.ousley@students.sacs.k12.in.us,0,,,,,,she,her,hers
-"Pantoja, Karen",Karen Pantoja,27833,karen.pantoja@students.sacs.k12.in.us,0,,,,,,she,her,hers
-"Passoni, Lucia",Lucia Passoni,39227,lucia.passoni@students.sacs.k12.in.us,0,,,,,,she,her,hers
-"Pedersen, Conner",Conner Pedersen,4167,conner.pedersen@students.sacs.k12.in.us,0,,,,,,he,him,his
-"Quay, Zander",Zander Quay,4549,zander.quay@students.sacs.k12.in.us,0,,,,,,he,him,his
-"Rayeski, Ava",Ava Rayeski,4181,ava.rayeski@students.sacs.k12.in.us,0,,,,,,she,her,hers
-"Reuille, Kiersten",Kiersten Reuille,29114,kiersten.reuille@students.sacs.k12.in.us,0,,,,,,she,her,hers
-"Rodriguez, Elizabeth",Elizabeth Rodriguez,33578,elizabeth.rodriguez@students.sacs.k12.in.us,0,,,,,,she,her,hers
-"Roth, Hanna",Hanna Roth,5175,hanna.roth@students.sacs.k12.in.us,0,,,,,,she,her,hers
-"Routh, Evan",Evan Routh,4322,evan.routh@students.sacs.k12.in.us,0,,,,,,he,him,his
-"Salas, Jasmine",Jasmine Salas,39867,jasmine.salas@students.sacs.k12.in.us,0,,,,,,she,her,hers
-"Sheets, Arlondo",Arlondo Sheets,28902,arlondo.sheets@students.sacs.k12.in.us,0,,,,,,he,him,his
-"Shurtz, Marin",Marin Shurtz,4220,marin.shurtz@students.sacs.k12.in.us,0,,,,,,she,her,hers
-"Skaggs, Drake",Drake Skaggs,39282,drake.skaggs@students.sacs.k12.in.us,0,,,,,,he,him,his
-"Smedberg, Camden",Camden Smedberg,4283,camden.smedberg@students.sacs.k12.in.us,0,,,,,,he,him,his
-"Stephens, Antone",Antone Stephens,40170,antone.stephens@students.sacs.k12.in.us,0,,,,,,he,him,his
-"Stout, Landon",Landon Stout,4288,landon.stout@students.sacs.k12.in.us,0,,,,,,he,him,his
-"Suan, Niang",Niang Suan,36551,niang.suan@students.sacs.k12.in.us,0,,,,,,she,her,hers
-"Swihart, Timothy",Timothy Swihart,37854,timothy.swihart@students.sacs.k12.in.us,0,,,,,,he,him,his
-"Tackett, Missy",Missy Tackett,39849,missy.tackett@students.sacs.k12.in.us,0,,,,,,she,her,hers
-"Utterback, Gavin",Gavin Utterback,28412,gavin.utterback@students.sacs.k12.in.us,0,,,,,,he,him,his
-"Vasquez, Kylie",Kylie Vasquez,9659,kylie.vasquez@students.sacs.k12.in.us,0,,,,,,she,her,hers
-"Wagner, Christopher",Christopher Wagner,33417,christopher.wagner@students.sacs.k12.in.us,0,,,,,,he,him,his
-"Walker, Evan",Evan Walker,39277,evan.walker@students.sacs.k12.in.us,0,,,,,,he,him,his
-"Wendel, Marissa",Marissa Wendel,5476,marissa.wendel@students.sacs.k12.in.us,0,,,,,,she,her,hers
-"West, Mason",Mason West,3911,mason.west@students.sacs.k12.in.us,0,,,,,,he,him,his
-"Wetzel, Kayla",Kayla Wetzel,4332,kayla.wetzel@students.sacs.k12.in.us,0,,,,,,she,her,hers
-"White, Myles",Myles White,4333,myles.white@students.sacs.k12.in.us,0,,,,,,he,him,his
-"Whiteman, Evan",Evan Whiteman,9740,evan.whiteman@students.sacs.k12.in.us,0,,,,,,he,him,his
-"Wise, Hunter",Hunter Wise,4193,hunter.wise@students.sacs.k12.in.us,0,,,,,,he,him,his
-"Womack, Isaiah",Isaiah Womack,41681,isaiah.womack@students.sacs.k12.in.us,0,,,,,,he,him,his
-"Ybarra, Amya",Amya Ybarra,8424,amya.ybarra@students.sacs.k12.in.us,0,,,,,,she,her,hers
-"Yesh, Tristen",Tristen Yesh,18320,tristen.yesh@students.sacs.k12.in.us,0,,,,,,he,him,his
-"Zent, Gloria",Gloria Zent,26790,gloria.zent@students.sacs.k12.in.us,0,,,,,,she,her,hers
+"Baker, Alivia",Alivia Baker,40108,alivia.baker@students.sacs.k12.in.us,0,Mr. Baker,bakerrich102@gmail.com,,,Alivia,she,her,hers
+"Beall, Noah",Noah Beall,4096,noah.beall@students.sacs.k12.in.us,0,Ms. Beall,sheribeall@gmail.com,,,Noah,he,him,his
+"Bell, Jackson",Jackson Bell,4111,jackson.bell@students.sacs.k12.in.us,0,Ms. Bell,aimeerbell@hotmail.com,,,Jackson,he,him,his
+"Bigelow, Brooke",Brooke Bigelow,39580,brooke.bigelow@students.sacs.k12.in.us,0,Ms. Surber,surber_29@yahoo.com,,,Brooke,she,her,hers
+"Blackstone, Alexia",Alexia Blackstone,40299,alexia.blackstone@sacs.k12.in.us,1.5,Ms. Brown,donielle@selectpropertymgmt.com,,,Alexia,she,her,hers
+"Blair, Jonathan",Jonathan Blair,3396,jonathan.blair@students.sacs.k12.in.us,1.5,Ms. Blair,JMBlair8408@gmail.com,,,Jonathan,he,him,his
+"Bowes, Masen",Masen Bowes,4203,masen.bowes@students.sacs.k12.in.us,0,Ms. Bowes,clbowes1114@gmail.com,,,Masen,he,him,his
+"Bowman, Ainsley",Ainsley Bowman,39537,ainsley.bowman@students.sacs.k12.in.us,0,Ms. Bowman,Deborah.Bowman@parkview.com,,,Ainsley,she,her,hers
+"Boykin, Maddox",Maddox Boykin,4473,maddox.boykin@students.sacs.k12.in.us,0,Ms. Boykin,communitymtg@gmail.com,,,Maddox,he,him,his
+"Brent, Caroline",Caroline Brent,39706,caroline.brent@students.sacs.k12.in.us,0,Ms. Brent,shelli.brent@mac.com,,,Caroline,she,her,hers
+"Broekhuizen, Elizabeth",Elizabeth Broekhuizen,5447,elizabeth.broekhuizen@students.sacs.k12.in.us,0,Ms. Broekhuizen,piggy619@hotmail.com,,,Elizabeth,she,her,hers
+"Brown, Anderson",Anderson Brown,1919,anderson.brown@students.sacs.k12.in.us,2,Ms. Brown,wbrown1002@me.com,,,Jash,he,him,his
+"Brown, Hannah",Hannah Brown,4118,hannah.brown@students.sacs.k12.in.us,0,Ms. Brown,allison.brown76@yahoo.com,,,Hannah,she,her,hers
+"Casteel, Ashton",Ashton Casteel,41065,ashton.casteel@students.sacs.k12.in.us,0,Ms. Searle,samanthasearle4688@gmail.com,,,Ashton,he,him,his
+"Clawson, David",David Clawson,38088,david.clawson@students.sacs.k12.in.us,0,Ms. Clawson,amandaclawson13@gmail.com,,,David,he,him,his
+"Cole, Samuel",Samuel Cole,39599,samuel.cole@students.sacs.k12.in.us,0,Ms. Viers,micheleviers68@gmail.com,,,Sam,he,him,his
+"Collins, Lucy",Lucy Collins,39299,lucy.collins@students.sacs.k12.in.us,0,Ms. Collins,shigh21809@yahoo.com,,,Lucy,she,her,hers
+"Conrad, Jaylee",Jaylee Conrad,7694,jaylee.conrad@students.sacs.k12.in.us,0,Ms. Conrad,dconrad@its.jnj.com,,,Jaylee,she,her,hers
+"Cornelio, Elizabeth",Elizabeth Cornelio,4085,elizabeth.cornelio@students.sacs.k12.in.us,0,Ms. Martinez,elitania.martinez@yahoo.com,,,Elizabeth,she,her,hers
+"Cummick, Maya",Maya Cummick,39296,maya.cummick@students.sacs.k12.in.us,0,Ms. Cummick,lecummick@outlook.com,,,Maya,she,her,hers
+"Dauterman, Sarah",Sarah Dauterman,5427,sarah.dauterman@students.sacs.k12.in.us,0,Ms. Dauterman,dautermanfamily@aol.com,,,Sarah,she,her,hers
+"Davis, Rachael",Rachael Davis,37942,rachael.davis@students.sacs.k12.in.us,0,Mr. Davis,demaricodavis@gmail.com,,,Rachel,she,her,hers
+"Dorsey, Landon",Landon Dorsey,4090,landon.dorsey@students.sacs.k12.in.us,0,Ms. Dorsey,rebekahjoyd@gmail.com,,,Landon,he,him,his
+"Exford, Josiah",Josiah Exford,27364,josiah.exford@students.sacs.k12.in.us,0,Ms. Exford,tufwprincess@hotmail.com,,,Josiah,he,him,his
+"Fairgood, Leilani",Leilani Fairgood,9783,leilani.fairgood@students.sacs.k12.in.us,0,Ms. Fairgood,AJohnson_8604@Yahoo.com,,,Leilani,she,her,hers
+"Fording, Myranda",Myranda Fording,3718,myranda.fording@students.sacs.k12.in.us,1.5,Ms. Fording,cfording08@gmail.com,,,Myranda,she,her,hers
+"Fremion, Mason",Mason Fremion,4099,mason.fremion@students.sacs.k12.in.us,0,Ms. Fremion,fremhr@msn.com,,,Mason,he,him,his
+"Gerstorff, Aaleyiah",Aaleyiah Gerstorff,4102,aaleyiah.gerstorff@students.sacs.k12.in.us,0,Ms. Gerstorff,kgerstorff@gmail.com,,,Leah,she,her,hers
+"Gilbert, Amanda",Amanda Gilbert,35126,amanda.gilbert@students.sacs.k12.in.us,0,Ms. Gilbert,gilbertk@bv.com,,,Amanda,she,her,hers
+"Graber, Alex",Alex Graber,18308,alex.graber@students.sacs.k12.in.us,0,Ms. Graber,jlbchamp@gmail.com,,,Alex,he,him,his
+"Graf, Colette Lola",Colette Lola Graf,2844,colettelola.graf@students.sacs.k12.in.us,0,Ms. Graf,bgraf@thechapel.net,,,Lola,she,her,hers
+"Gray, Macy",Macy Gray,5137,macy.gray@students.sacs.k12.in.us,0,Ms. Gray,kemgray@yahoo.com,,,Macy,she,her,hers
+"Groover, Ethan",Ethan Groover,40174,ethan.groover@students.sacs.k12.in.us,0,Ms. Groover,ladyhekuba@yahoo.com,,,Ethan,he,him,his
+"Guerrero, Raquel",Raquel Guerrero,4847,raquel.guerrero@students.sacs.k12.in.us,0,Ms. Guerrero,rosa.guerrero001@yahoo.com,,,Raquel,she,her,hers
+"Guy, George",George Guy,5003,george.guy@students.sacs.k12.in.us,0,Ms. Guy,crystal4liasophia@yahoo.com,Mr. Guy,gguy@fwha.org,George,he,him,his
+"Hauck, Jamari",Jamari Hauck,4917,jamari.hauck@students.sacs.k12.in.us,1.5,Ms. Hauck,hauckdesiree@gmail.com,,,Jamari,he,him,his
+"Haught, Preston",Preston Haught,8382,preston.haught@students.sacs.k12.in.us,0,Ms. Haught,haughtfamily4@yahoo.com,,,Preston,he,him,his
+"Heard, Jakob",Jakob Heard,4500,jakob.heard@students.sacs.k12.in.us,0,Ms. Heard,nancylheard@aol.com,,,Jakob,he,him,his
+"Hockemeyer, Vanessa",Vanessa Hockemeyer,27368,vanessa.hockemeyer@students.sacs.k12.in.us,0,Ms. Sandoval,sonia.hockemeyer@gmail.com,,,Vanessa,she,her,hers
+"Hoff, Sydney",Sydney Hoff,4242,sydney.hoff@students.sacs.k12.in.us,0,Ms. Hoff,jjhoff23@gmail.com,,,Sydney,she,her,hers
+"Hunter, Evan",Evan Hunter,4110,evan.hunter@students.sacs.k12.in.us,0,Ms. Hunter,Meh2686@yahoo.com,,,Evan,he,him,his
+"Hurley, Cameron",Cameron Hurley,18635,cameron.hurley@students.sacs.k12.in.us,0,Ms. Hurley,candi.hurley@yahoo.com,,,Cameron,he,him,his
+"Jernigan, Chase",Chase Jernigan,5068,chase.jernigan@students.sacs.k12.in.us,0,Ms. Jernigan,wendy.jernigan@fwcs.k12.in.us,,,Chase,he,him,his
+"Johnson, Karsten",Karsten Johnson,4236,karsten.johnson@students.sacs.k12.in.us,0,Ms. Johnson,lajohnson2006@gmail.com,,,Karsten,he,him,his
+"Johnson, Tyrell",Tyrell Johnson,7708,tyrell.johnson@students.sacs.k12.in.us,0,Ms. McBride,pavilionenterprises@msn.com,,,Tyrell,he,him,his
+"Kadel, Piper",Piper Kadel,35098,piper.kadel@students.sacs.k12.in.us,0,Ms. Kadel,cassiekadel@gmail.com,,,Piper,she,her,hers
+"Kazee, Justiss",Justiss Kazee,33470,justiss.kazee@students.sacs.k12.in.us,0,Ms. Knight,n.knight33.nk@gmail.com,,,Justiss,she,her,hers
+"Keiser, Kaelyn",Kaelyn Keiser,4212,kaelyn.Keiser@students.sacs.k12.in.us,0,Ms. Keiser,megankeiser87@gmail.com,,,Kaelyn,she,her,hers
+"Kennard, Ethan",Ethan Kennard,20460,ethan.kennard@students.sacs.k12.in.us,0,Ms. Kennard,kristenkennard@yahoo.com,,,Ethan,he,him,his
+"Kinder, Owen",Owen Kinder,28714,owen.kinder@students.sacs.k12.in.us,0,Ms. Kinder,kathykinder89@yahoo.com,,,Owen,he,him,his
+"Kintz, Luke",Luke Kintz,4207,luke.kintz@students.sacs.k12.in.us,0,Ms. Kintz,skintz@frontier.com,,,Luke,he,him,his
+"Klukpui, Elorm",Elorm Klukpui,19175,elorm.klukpui@students.sacs.k12.in.us,0,Ms. Klukpui,afiefa2002@yahoo.com,,,Elorm,he,him,his
+"Knight, Alison",Alison Knight,4293,alison.knight@students.sacs.k12.in.us,0,Ms. Knight,asilknight@comcast.net,,,Alison,she,her,hers
+"Kreul, Malaynie",Malaynie Kreul,9621,malaynie.kreul@students.sacs.k12.in.us,0,Ms. Kreul,nkreul@gmail.com,,,Laynie,she,her,hers
+"Little, Wyatt",Wyatt Little,29747,wyatt.little@students.sacs.k12.in.us,0,Ms. Little,melissalittle6@gmail.com,,,Wyatt,he,him,his
+"Lopez, Isriel",Isriel Lopez,41466,isriel.lopez@students.sacs.k12.in.us,0,Ms. McCuiston,victoriamccuiston@yahoo.com,,,Isriel,he,him,his
+"Louck, Noah",Noah Louck,36242,noah.louck@students.sacs.k12.in.us,0,Ms. Louck,gsjtlouck@msn.com,,,Noah,he,him,his
+"Majewski, Samantha",Samantha Majewski,4475,samantha.majewski@students.sacs.k12.in.us,0,Ms. Majewski,sjasmaj4@hotmail.com,,,Sam,she,her,hers
+"Mangan, Jordan",Jordan Mangan,4144,jordan.mangan@students.sacs.k12.in.us,0,Ms. Mangan,Jazzy_tah@yahoo.com,,,Jordan,he,him,his
+"Manson, Nicole",Nicole Manson,4244,nicole.manson@students.sacs.k12.in.us,0,Ms. Manson,rmanson90@yahoo.com,,,Nicole,she,her,hers
+"Marinosci, Alexandria",Alexandria Marinosci,39765,alexandria.marinosci@students.sacs.k12.in.us,0,Mr. Marinosci,mike.marinosci@gmail.com,,,Alex,she,her,hers
+"McConnell, Jozef",Jozef McConnell,5425,jozef.mcconnell@students.sacs.k12.in.us,0,Ms. McConnell,prescious215@yahoo.com,,,Jozef,he,him,his
+"McCulloch, Charlotte",Charlotte McCulloch,11054,charlotte.mcculloch@students.sacs.k12.in.us,0,Ms. McCulloch,hl.mcculloch42@gmail.com,,,Charlotte,she,her,hers
+"McMahan, Chesnee",Chesnee McMahan,7677,chesnee.mcmahan@students.sacs.k12.in.us,0,Ms. McKee,jlmckee23@gmail.com,,,Chesnee,she,her,hers
+"McMillan, Marshall",Marshall McMillan,4150,marshall.mcmillan@students.sacs.k12.in.us,1.5,Ms. McMillan,brmcmillan@aol.com,,,Marshall,he,him,his
+"Mohammed, Abdullah",Abdullah Mohammed,40298,abdullah.mohammed@students.sacs.k12.in.us,0,Ms. Qureshi,Naziaqureshi2017@gmail.com,,,Abdullah,he,him,his
+"Munoz, Logan",Logan Munoz,40782,logan.munoz@students.sacs.k12.in.us,0,Ms. Munoz,katieandnick25@gmail.com,,,Logan,he,him,his
+"Myers, Jacob",Jacob Myers,4210,jacob.myers@students.sacs.k12.in.us,0,Ms. Myers,myersr0510@gmail.com,,,Jacob,he,him,his
+"Myers, Rylan",Rylan Myers,39307,rylan.myers@students.sacs.k12.in.us,0,Ms. Myers,jadrz.phone@yahoo.com,,,Rylan,she,her,hers
+"North, Travis",Travis North,4208,travis.north@students.sacs.k12.in.us,0,Ms. North,donna.north@baesystems.com,,,Travis,he,him,his
+"Ousley, Anna",Anna Ousley,27199,anna.ousley@students.sacs.k12.in.us,0,Ms. Ousley,april@infinitypoolsinc.com,,,Anna,she,her,hers
+"Pantoja, Karen",Karen Pantoja,27833,karen.pantoja@students.sacs.k12.in.us,0,Ms. Pantoja,pantoja_pao@yahoo.com,,,Karen,she,her,hers
+"Passoni, Lucia",Lucia Passoni,39227,lucia.passoni@students.sacs.k12.in.us,0,Ms. Passoni,fortwayne1@hotmail.com,,,Lucia,she,her,hers
+"Pedersen, Conner",Conner Pedersen,4167,conner.pedersen@students.sacs.k12.in.us,0,Ms. Baumgartner,arabaumgartner@gmail.com,,,Conner,he,him,his
+"Quay, Zander",Zander Quay,4549,zander.quay@students.sacs.k12.in.us,0,Ms. Quay,jquay03@outlook.com,,,Zander,he,him,his
+"Rayeski, Ava",Ava Rayeski,4181,ava.rayeski@students.sacs.k12.in.us,0,Ms. Rayeski,kari32@comcast.net,,,Ava,she,her,hers
+"Reuille, Kiersten",Kiersten Reuille,29114,kiersten.reuille@students.sacs.k12.in.us,0,Ms. Parrish,kap5519@gmail.com,,,Kiersten,she,her,hers
+"Rodriguez, Elizabeth",Elizabeth Rodriguez,33578,elizabeth.rodriguez@students.sacs.k12.in.us,0,Ms. Rodriguez,christineccr@gmail.com,,,Elizabeth,she,her,hers
+"Roth, Hanna",Hanna Roth,5175,hanna.roth@students.sacs.k12.in.us,0,Mr. Roth,croth1203@yahoo.com,,,Hanna,she,her,hers
+"Routh, Evan",Evan Routh,4322,evan.routh@students.sacs.k12.in.us,0,Ms. Routh,larouth@frontier.com,,,Evan,he,him,his
+"Salas, Jasmine",Jasmine Salas,39867,jasmine.salas@students.sacs.k12.in.us,0,Ms. Bowen,salas314@gmail.com,,,Jasmine,she,her,hers
+"Sheets, Arlondo",Arlondo Sheets,28902,arlondo.sheets@students.sacs.k12.in.us,0,Ms. Sheets,tsheets27@gmail.com,,,Arlondo,he,him,his
+"Shurtz, Marin",Marin Shurtz,4220,marin.shurtz@students.sacs.k12.in.us,0,Ms. Shurtz,dcshurtz@me.com,,,Marin,she,her,hers
+"Skaggs, Drake",Drake Skaggs,39282,drake.skaggs@students.sacs.k12.in.us,0,Ms. Skaggs,sondra.skaggs@fwcs.k12.in.us,,,Drake,he,him,his
+"Smedberg, Camden",Camden Smedberg,4283,camden.smedberg@students.sacs.k12.in.us,0,Ms. Smedberg,cssmedberg@hotmail.com,,,Camden,he,him,his
+"Stephens, Antone",Antone Stephens,40170,antone.stephens@students.sacs.k12.in.us,1.5,Ms. Burnett,ty72burn@gmail.com,,,Antone,he,him,his
+"Stout, Landon",Landon Stout,4288,landon.stout@students.sacs.k12.in.us,0,Ms. Stout Hendricks,Natagroomer@yahoo.com,,,Landon,he,him,his
+"Suan, Niang",Niang Suan,36551,niang.suan@students.sacs.k12.in.us,0,Mr. Pu,JamesPauPu2019@gmail.com,,,Niang,she,her,hers
+"Swihart, Timothy",Timothy Swihart,37854,timothy.swihart@students.sacs.k12.in.us,0,Ms. Swihart,sharmalinag@gmail.com,,,Tim,he,him,his
+"Tackett, Missy",Missy Tackett,39849,missy.tackett@students.sacs.k12.in.us,0,Ms. Roberts,mmillerjcca@yahoo.com,,,Missy,she,her,hers
+"Utterback, Gavin",Gavin Utterback,28412,gavin.utterback@students.sacs.k12.in.us,0,Ms. Utterback,autterback77@gmail.com,,,Gavin,he,him,his
+"Vasquez, Kylie",Kylie Vasquez,9659,kylie.vasquez@students.sacs.k12.in.us,0,Ms. Kreiner,dee.vasquez3@gmail.com,,,Kylie,she,her,hers
+"Wagner, Christopher",Christopher Wagner,33417,christopher.wagner@students.sacs.k12.in.us,0,Ms. Wagner,wagnerfamily09@gmail.com,,,Chris,he,him,his
+"Walker, Evan",Evan Walker,39277,evan.walker@students.sacs.k12.in.us,0,Ms. Walker,prewalker3@yahoo.com,,,Evan,he,him,his
+"Wendel, Marissa",Marissa Wendel,5476,marissa.wendel@students.sacs.k12.in.us,0,Ms. DeBaillie,lovepink0806@gmail.com,,,Marissa,she,her,hers
+"West, Mason",Mason West,3911,mason.west@students.sacs.k12.in.us,0,Ms. West,stefwest1980@yahoo.com,,,Mason,he,him,his
+"Wetzel, Kayla",Kayla Wetzel,4332,kayla.wetzel@students.sacs.k12.in.us,0,,,,,Kayla,she,her,hers
+"White, Myles",Myles White,4333,myles.white@students.sacs.k12.in.us,0,Ms. White,white_demetris@yahoo.com,,,Myles,he,him,his
+"Whiteman, Evan",Evan Whiteman,9740,evan.whiteman@students.sacs.k12.in.us,0,Ms. Whiteman,Amie-whiteman@att.net,,,Evan,he,him,his
+"Wise, Hunter",Hunter Wise,4193,hunter.wise@students.sacs.k12.in.us,0,Ms. Wise,lawise2000@gmail.com,,,Hunter,he,him,his
+"Womack, Isaiah",Isaiah Womack,41681,isaiah.womack@students.sacs.k12.in.us,0,Ms. Womack,jennie2281@yahoo.com,,,Isaiah,he,him,his
+"Ybarra, Amya",Amya Ybarra,8424,amya.ybarra@students.sacs.k12.in.us,0,Ms. Neal,karakayann62482@gmail.com,,,Amya,she,her,hers
+"Yesh, Tristen",Tristen Yesh,18320,tristen.yesh@students.sacs.k12.in.us,0,Ms. Yesh,yesh23@hotmail.com,,,Tristen,he,him,his
+"Zent, Gloria",Gloria Zent,26790,gloria.zent@students.sacs.k12.in.us,0,Ms. Zent,mzent@sacs.k12.in.us,,,Gloria,she,her,hers
