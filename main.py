@@ -1,5 +1,5 @@
 import canvasapi, time 
-import assignment_methods, course_methods, module_methods, quiz_methods
+import assignment_methods, course_methods, module_methods, quiz_methods, user_methods
 
 token = '5593~yT5hxNeSPWoWVirrMP8DZBbSr10nkIXaUJJRVoybQfO7lvFlh4RlMVtGHutBdQr4'
 url_API = 'https://sacs.instructure.com'
@@ -31,7 +31,10 @@ while user_choice not in ['q', 'Q', 'quit', 'Quit']:
         "\n\t2e. Copy Module (Junior's Method)" +
         "\n\t2f. Get Missing Assignments Report"
         "\n\nQuiz Methods" +
-        "\n\t3a. Report Checkpoint Results to Parents"
+        "\n\t3a. Report Checkpoint Results to Parents" +
+        "\n\t3b. Excuse Lower Score Checkpoint A/B" +
+        "\n\nUser Methods" +
+        "\n\t4a. List Assignments for a User"
         )
     user_choice = input("\n>>> ").strip().lower()
 
@@ -62,6 +65,16 @@ while user_choice not in ['q', 'Q', 'quit', 'Quit']:
         module_methods.display_modules(current_course)
         current_module = module_methods.set_module(current_course)
         quiz_methods.parent_test_report(current_course, current_module)
+
+    elif user_choice == '3b':
+        """Iterate through Checkpoint A and B submissions, excusing the lower of the two scores."""
+        module_methods.display_modules(current_course)
+        current_module = module_methods.set_module(current_course)
+        quiz_methods.keep_high_checkpoint(current_course, current_module, count, all_students)
+
+    elif user_choice == '4a':
+        """Display all of the assignments for a given student in a course."""
+        user_methods.get_assignments(current_course)
 
 '''
 courses = canvas.get_courses()

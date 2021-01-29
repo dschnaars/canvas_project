@@ -65,25 +65,67 @@ def set_extensions(current_course):
     """Method for setting quiz extensions for specified students."""
     pass
 
-def keep_high_checkpoint(current_course, count, all_students):
+def keep_high_checkpoint(current_course, current_module, count, all_students):
     """Method for examining Checkpoint A and B and keeping high score while excusing low."""
+    filename = input("Enter the name of the .csv file to pull data from:\n>>> ").strip()
+    students_dictionary = {}
+    with open(filename, 'r') as csv_read:
+            students = csv.reader(csv_read)
 
-    #TODO: gather all submissions for the given quizzes in question
-    current_module = module_methods.set_module(current_course)
-    module_methods.display_module_items(current_module)
-    checkpoint_a_id = int(input("Enter the Quiz ID number for Checkpoint A: ").strip())
-    checkpoint_b_id = int(input("Enter the Quiz ID number for Checkpoint B: ").strip())
+            next(students) #skip the header row
 
-    set_checkpoint_a = current_course.get_quiz(checkpoint_a_id)
-    set_checkpoint_b = current_course.get_quiz(checkpoint_b_id)
+            for student in students:
+                students_dictionary[student[2]] = {
+                    'sortable_name':student[0]
+                }
 
-    checkpoint_a_submissions = set_checkpoint_a.get_submissions()
-    checkpoint_b_submissions = set_checkpoint_b.get_submissions()
+    #Display all tests/quizzes in this module and choose the test of interest
+    all_items = current_module.get_module_items()
+    for item in all_items:
+        if item.type == 'Quiz':
+            print(item.title, item.content_id)
+    
+    #Gather submissions for Checkpoint A
+    checkpoint_id = int(input("Enter the Quiz ID number for Checkpoint A: ").strip())
+    checkpoint_a = current_course.get_quiz(checkpoint_id)
+    checkpoint_a_submissions = checkpoint_a.get_submissions()
 
-    #TODO: Iterate through each student in the class and get their scores for each test
-    for student in all_students:
-        checkpoint_a = 0 #assign initial value of 0 for each quiz.score
-        checkpoint_b = 0
+    #Gather submissions for Checkpoint B
+    checkpoint_id = int(input("Enter the Quiz ID number for Checkpoint B: ").strip())
+    checkpoint_b = current_course.get_quiz(checkpoint_id)
+    checkpoint_b_submissions = checkpoint_b.get_submissions()
+
+    #Iterate through submissions and add score to each student in the dictionary
+    for submission in checkpoint_a_submissions:
+        if str(submission.user_id) in students_dictionary:
+            students_dictionary[str(submission.user_id)]['score_a'] = submission.score
+
+    for submission in checkpoint_b_submissions:
+        if str(submission.user_id) in students_dictionary:
+            students_dictionary[str(submission.user_id)]['score_b'] = submission.score
+
+    check_a_not_taken = []
+    check_b_not_taken = []
+    neither_taken = []
+    for student in students_dictionary:
+        name = students_dictionary[student]['sortable_name']
+        if 'score_a' in students_dictionary[student]: 
+            if students_dictionary[student]['score_a'] == None:
+                check_a_not_taken.append(name)
+            else:
+                print(name, students_dictionary[student]['score_a'])
+        if 'score_b' in students_dictionary[student]:
+            if students_dictionary[student]['score_b'] == None:
+                check_b_not_taken.append(name)
+            else:
+                print(name, students_dictionary[student]['score_b'])
+            
+    print(check_a_not_taken, '\n', check_b_not_taken, '\n', neither_taken)
+'''
+    attributes = vars(checkpoint_b_submissions[0])
+    for item in attributes.items():
+        print(item)
+'''
 
 def parent_test_report(current_course, current_module):
     """Method for reporting mastery, passing, or failing test results to parents."""
@@ -215,7 +257,7 @@ def parent_test_report(current_course, current_module):
                 print("successful email sent to", students_dictionary[user]['sortable_name'])
             
             except smtplib.SMTPRecipientsRefused:
-                failed_parent_emails.append([students_dictionary[user]['parent_1'], students_dictionary[user]['parent_email1']])
+                failed_parent_emails.append([students_dictionary[user]['sortable_name'], students_dictionary[user]['parent_1'], students_dictionary[user]['parent_email1']])
             #smtpObj.sendmail(username, students_dictionary[user]['parent_email1'].strip(), message)
             #test_counter += 1
         
@@ -236,8 +278,8 @@ def parent_test_report(current_course, current_module):
     for parent in failed_parent_emails:
         print(parent)
 
-    '''
-    attributes = vars(submissions[0])
-    for item in attributes.items():
-        print(item)
-    '''
+'''
+attributes = vars(submissions[0])
+for item in attributes.items():
+    print(item)
+'''
