@@ -6,7 +6,13 @@ def get_assignments(current_course):
     user = current_course.get_user(user_id)
 
     assignments = user.get_assignments(current_course.id)
+    '''
+    count = 0
+    for assignment in assignments:
+        print(count, assignment.name)
+        count += 1
+    '''
 
-    attributes = vars(assignments[14])
+    attributes = vars(assignments[26])
     for item in attributes.items():
         print(item)

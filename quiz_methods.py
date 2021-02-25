@@ -68,6 +68,9 @@ def set_extensions(current_course):
 def keep_high_checkpoint(current_course, current_module, count, all_students):
     """Method for examining Checkpoint A and B and keeping high score while excusing low."""
     filename = input("Enter the name of the .csv file to pull data from:\n>>> ").strip()
+
+    #create a dictionary of all users where the user ID is main key, value is a dictionary
+    #of keys:values such as sortable name, checkpoint A/B scores, etc..
     students_dictionary = {}
     with open(filename, 'r') as csv_read:
             students = csv.reader(csv_read)
