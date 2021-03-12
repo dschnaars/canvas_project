@@ -33,6 +33,7 @@ while user_choice not in ['q', 'Q', 'quit', 'Quit']:
         "\n\nQuiz Methods" +
         "\n\t3a. Report Checkpoint Results to Parents" +
         "\n\t3b. Excuse Lower Score Checkpoint A/B" +
+        "\n\t3c. Notify Parents of Upcoming Study Sessions" +
         "\n\nUser Methods" +
         "\n\t4a. List Assignments for a User"
         )
@@ -71,6 +72,13 @@ while user_choice not in ['q', 'Q', 'quit', 'Quit']:
         module_methods.display_modules(current_course)
         current_module = module_methods.set_module(current_course)
         quiz_methods.keep_high_checkpoint(current_course, current_module, count, all_students)
+
+    elif user_choice == '3c':
+        """Generate an email to parents of students who failed the previos
+        Checkpoint A. Notify them of the upcoming study sessions for next Checkpoint."""
+        module_methods.display_modules(current_course)
+        current_module = module_methods.set_module(current_course)
+        quiz_methods.parent_notify(current_course, current_module)
 
     elif user_choice == '4a':
         """Display all of the assignments for a given student in a course."""
